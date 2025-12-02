@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <title>安井火锅食材报价单</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
+      background: #f5f5f5;
+      padding: 16px;
+    }
+    .container {
+      max-width: 720px;
+      margin: 16px auto 32px;
+      background: #ffffff;
+      border-radius: 12px;
+      padding: 20px 16px 24px;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+    }
+    h1 {
+      font-size: 20px;
+      text-align: center;
+      margin-bottom: 4px;
+    }
+    .sub {
+      font-size: 13px;
+      text-align: center;
+      color: #777;
+      margin-bottom: 16px;
+    }
+    .info-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 12px;
+      font-size: 14px;
+    }
+    .info-row span {
+      margin-right: 12px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+      margin-top: 8px;
+    }
+    th, td {
+      padding: 8px 4px;
+      text-align: center;
+      border-bottom: 1px solid #eee;
+    }
+    th {
+      background: #f7f7f7;
+    }
+    input[type="number"] {
+      width: 70px;
+      padding: 4px;
+    }
+    .total {
+      margin-top: 14px;
+      font-size: 16px;
+      font-weight: 600;
+      text-align: right;
+    }
+    .customer {
+      margin-top: 14px;
+      font-size: 14px;
+    }
+    .customer label {
+      display: block;
+      margin-bottom: 6px;
+    }
+    .customer input {
+      width: 100%;
+      padding: 6px 8px;
+      font-size: 14px;
+      margin-top: 4px;
+      border-radius: 6px;
+      border: 1px solid #ddd;
+    }
+    button {
+      margin-top: 18px;
+      width: 100%;
+      padding: 11px 0;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    #submit-btn {
+      background: #4caf50;
+      color: #fff;
+    }
+    #submit-btn:disabled {
+      opacity: .6;
+      cursor: not-allowed;
+    }
+    .tips {
+      margin-top: 10px;
+      font-size: 12px;
+      color: #888;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>安井火锅食材报价单</h1>
+    <div class="sub">报价时间：2025-11-18　报价有效期：2025-11-18 ~ 2026-11-18</div>
+
+    <div class="info-row">
+      <span>对接人：解锦龙</span>
+      <span>联系方式：请填写在下方</span>
+    </div>
+
+    <form id="quote-form">
+      <table>
+        <thead>
+          <tr>
+            <th>选择</th>
+            <th>名称</th>
+            <th>规格</th>
+            <th>单价（元/斤）</th>
+            <th>数量（斤）</th>
+            <th>小计（元）</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- 这些商品数据是根据你 Excel 里的报价单写的 -->
+          <tr class="item-row" data-name="牛板腱" data-spec="一斤" data-price="40">
+            <td><input type="checkbox" class="item-check"></td>
+            <td>牛板腱</td>
+            <td>一斤</td>
+            <td>40</td>
+            <td><input type="number" class="qty" value="1" min="1"></td>
+            <td class="row-total">0.00</td>
+          </tr>
+          <tr class="item-row" data-name="牛雪花" data-spec="一斤" data-price="32">
+            <td><input type="checkbox" class="item-check"></td>
+            <td>牛雪花</td>
+            <td>一斤</td>
+            <td>32</td>
+            <td><input type="number" class="qty" value="1" min="1"></td>
+            <td class="row-total">0.00</td>
+          </tr>
+          <tr class="item-row" data-name="羊高钙" data-spec="一斤" data-price="36">
+            <td><input type="checkbox" class="item-check"></td>
+            <td>羊高钙</td>
+            <td>一斤</td>
+            <td>36</td>
+            <td><input type="number" class="qty" value="1" min="1"></td>
+            <td class="row-total">0.00</td>
+          </tr>
+          <tr class="item-row" data-name="小羔羊" data-spec="一斤" data-price="32">
+            <td><input type="checkbox" class="item-check"></td>
+            <td>小羔羊</td>
+            <td>一斤</td>
+            <td>32</td>
+            <td><input type="number" class="qty" value="1" min="1"></td>
+            <td class="row-total">0.00</td>
+          </tr>
+          <tr class="item-row" data-name="安井散称" data-spec="一斤" data-price="12">
+            <td><input type="checkbox" class="item-check"></td>
+            <td>安井散称</td>
+            <td>一斤</td>
+            <td>12</td>
+            <td><input type="number" class="qty" value="1" min="1"></td>
+            <td class="row-total">0.00</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="total">
+        总价：<span id="total">0.00</span> 元
+      </div>
+
+      <div class="customer">
+        <label>
+          客户名称 / 收货人
+          <input type="text" id="customer-name" placeholder="例如：许佳萱">
+        </label>
+        <label>
+          联系方式（手机 / 微信）
+          <input type="text" id="customer-contact" placeholder="方便商家联系确认订单">
+        </label>
+      </div>
+
+      <button type="button" id="submit-btn">提交报价单</button>
+
+      <div class="tips">
+        提示：本页面只做演示，提交时会向你配置的后端接口发送一份 JSON 报价数据。<br>
+        请将脚本中的 <code>SUBMIT_URL</code> 替换为你自己的服务端地址。
+      </div>
+    </form>
+  </div>
+
+  <script>
+    // ===== 1. 实时计算小计 & 总价 =====
+    function recalc() {
+      let total = 0;
+      document.querySelectorAll('.item-row').forEach(row => {
+        const checkbox = row.querySelector('.item-check');
+        const qtyInput = row.querySelector('.qty');
+        const rowTotalCell = row.querySelector('.row-total');
+        const price = Number(row.dataset.price);
+        const qty = Number(qtyInput.value) || 0;
+
+        let rowTotal = 0;
+        if (checkbox.checked && qty > 0) {
+          rowTotal = price * qty;
+        }
+        rowTotalCell.textContent = rowTotal.toFixed(2);
+        total += rowTotal;
+      });
+      document.getElementById('total').textContent = total.toFixed(2);
+    }
+
+    // 绑定事件：勾选框 & 数量输入改变时重算
+    document.querySelectorAll('.item-check, .qty').forEach(el => {
+      el.addEventListener('change', recalc);
+      el.addEventListener('input', recalc);
+    });
+
+    // 页面加载后先算一遍（默认全 0）
+    recalc();
+
+    // ===== 2. 点击提交时，把数据发给服务端 =====
+    const SUBMIT_URL = 'https://your-server.com/api/huoguo-quote'; // TODO: 换成你自己的接口地址
+
+    document.getElementById('submit-btn').addEventListener('click', async () => {
+      const name = document.getElementById('customer-name').value.trim();
+      const contact = document.getElementById('customer-contact').value.trim();
+      const totalText = document.getElementById('total').textContent;
+      const total = Number(totalText);
+
+      if (!name) {
+        alert('请填写客户名称 / 收货人');
+        return;
+      }
+      if (!contact) {
+        alert('请填写联系方式');
+        return;
+      }
+      if (total <= 0) {
+        alert('请选择至少一个商品并填写数量');
+        return;
+      }
+
+      const items = [];
+      document.querySelectorAll('.item-row').forEach(row => {
+        const checkbox = row.querySelector('.item-check');
+        const qtyInput = row.querySelector('.qty');
+        if (!checkbox.checked) return;
+
+        const qty = Number(qtyInput.value) || 0;
+        if (qty <= 0) return;
+
+        const price = Number(row.dataset.price);
+        const name = row.dataset.name;
+        const spec = row.dataset.spec;
+        const rowTotal = price * qty;
+
+        items.push({
+          name,
+          spec,
+          price,
+          qty,
+          subtotal: rowTotal
+        });
+      });
+
+      const payload = {
+        customerName: name,
+        customerContact: contact,
+        items,
+        total,
+        createdAt: new Date().toISOString()
+      };
+
+      // 防止误点：提交期间禁用按钮
+      const btn = document.getElementById('submit-btn');
+      btn.disabled = true;
+      btn.textContent = '提交中...';
+
+      try {
+        const resp = await fetch(SUBMIT_URL, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(payload)
+        });
+
+        if (!resp.ok) {
+          throw new Error('HTTP ' + resp.status);
+        }
+
+        alert('报价单已提交成功！');
+        // 这里也可以改成跳转到“提交成功”页面
+      } catch (err) {
+        console.error(err);
+        alert('提交失败：请检查网络或服务端接口（控制台有详细错误信息）');
+      } finally {
+        btn.disabled = false;
+        btn.textContent = '提交报价单';
+      }
+    });
+  </script>
+</body>
+</html>
