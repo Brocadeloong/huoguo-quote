@@ -1,0 +1,24 @@
+{
+  "name": "huoguo-quote",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Brocadeloong/huoguo-quote.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Brocadeloong/huoguo-quote/issues"
+  },
+  "homepage": "https://github.com/Brocadeloong/huoguo-quote#readme",
+  "dependencies": {
+    "xlsx": "^0.18.5"
+  }
+}
