@@ -569,6 +569,10 @@
       padding: 16px;
       box-sizing: border-box;
       text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
     }
     .confirm-preview-img {
       max-width: 100%;
@@ -583,26 +587,30 @@
       color: #888;
     }
     .confirm-preview-save {
-      margin-top: 14px;
-      padding: 10px 16px;
-      border-radius: 10px;
+      margin-top: 4px;
+      padding: 12px 18px;
+      border-radius: 12px;
       border: none;
       background: linear-gradient(135deg, #ff8a5c, #ff5757);
       color: #fff;
-      font-size: 15px;
+      font-size: 16px;
       font-weight: 600;
       cursor: pointer;
       box-shadow: 0 6px 14px rgba(255, 87, 87, 0.25);
+      width: 80%;
+      max-width: 360px;
     }
     .confirm-preview-close {
-      margin-top: 16px;
-      padding: 8px 16px;
-      border-radius: 8px;
+      margin-top: 6px;
+      padding: 10px 16px;
+      border-radius: 10px;
       border: none;
       background: #409eff;
       color: #fff;
       font-size: 14px;
       cursor: pointer;
+      width: 80%;
+      max-width: 360px;
     }
 
     /* 移动端优化 */
@@ -721,7 +729,7 @@
     </div>
 
     <div class="info-row">
-      <span>对接人👨/👩：赵攀、李雨</span>
+      <span>对接人👨、👩：赵攀、李雨</span>
       <span>门店地址🏠：民生路市场 安井火锅食材</span>
       <span>联系电话📞：19723026666、15191314973</span>
     </div>
@@ -2612,18 +2620,30 @@
       });
     }
     if (confirmPreviewSave) {
-      confirmPreviewSave.addEventListener('click', () => {
-        if (!lastConfirmDataUrl) return;
-        if (isWeChat()) {
-          alert('微信内置浏览器无法一键保存，请长按图片选择“保存图片”');
-          return;
+      confirmPreviewSave.addEventListener('click', async () => {
+        // 若还没生成过图片，先触发生成
+        if (!lastConfirmDataUrl) {
+          await saveConfirmSnapshot('安井火锅报价确认单.png');
         }
-        const a = document.createElement('a');
-        a.href = lastConfirmDataUrl;
-        a.download = '安井火锅报价确认单.png';
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
+        if (!lastConfirmDataUrl) return;
+
+        if (isWeChat()) {
+          // 微信：无法直接写入相册，提示长按保存
+          alert('微信内置浏览器无法一键保存，请长按图片选择“保存图片”');
+          // 确保预览层可见，便于长按
+          confirmPreviewImg.src = lastConfirmDataUrl;
+          confirmPreview.classList.add('show');
+          confirmPreview.setAttribute('aria-hidden', 'false');
+          document.body.style.overflow = 'hidden';
+        } else {
+          // 其他浏览器：直接下载
+          const a = document.createElement('a');
+          a.href = lastConfirmDataUrl;
+          a.download = '安井火锅报价确认单.png';
+          document.body.appendChild(a);
+          a.click();
+          document.body.removeChild(a);
+        }
       });
     }
 
