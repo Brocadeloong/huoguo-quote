@@ -2748,6 +2748,8 @@
       confirmModal.classList.add('show');
       confirmModal.setAttribute('aria-hidden', 'false');
       document.body.style.overflow = 'hidden';
+      // 进入确认单时强制回到顶部，确保全屏展示（移动端填写后可能滚到底部）
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
     function closeConfirmModal() {
