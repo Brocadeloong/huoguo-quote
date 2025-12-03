@@ -70,12 +70,15 @@
     th, td {
       padding: 9px 6px;
       text-align: center;
-      border-bottom: 1px solid #f0f0f0;
+      border-bottom: 1px solid #d7dce5;
+      word-break: break-word;
+      white-space: normal;
     }
     td:nth-child(2),
     th:nth-child(2) {
-      text-align: left;
-      padding-left: 10px;
+      text-align: center;
+      padding-left: 0;
+      line-height: 1.35;
     }
     th {
       background: #f9fafb;
@@ -110,6 +113,205 @@
       text-align: right;
       color: #111827;
     }
+    .selected-box {
+      margin-top: 12px;
+      background: #f8fafc;
+      border: 1px solid #e8edf3;
+      border-radius: 12px;
+      padding: 8px 10px;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.6);
+    }
+    .selected-header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-size: 13px;
+      color: #374151;
+      margin-bottom: 6px;
+      gap: 4px;
+    }
+    .selected-header strong {
+      font-size: 14px;
+      color: #111827;
+    }
+    .selected-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    .selected-list li {
+      padding: 6px 0;
+      border-bottom: 1px dashed #e5e7eb;
+    }
+    .selected-list li:last-child {
+      border-bottom: none;
+    }
+    .selected-list .sel-name {
+      font-weight: 600;
+      color: #111827;
+      margin-bottom: 2px;
+      word-break: break-word;
+    }
+.selected-list .sel-meta {
+  font-size: 12px;
+  color: #6b7280;
+  word-break: break-word;
+}
+.selected-list .sel-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 6px;
+  font-size: 12px;
+  color: #4b5563;
+  width: 100%;
+  flex-wrap: wrap;
+}
+.selected-list .sel-actions .qty-wrap {
+  flex: 1 1 110px;
+  min-width: 90px;
+  max-width: 140px;
+}
+.sel-remove {
+  color: #b91c1c;
+  cursor: pointer;
+  font-size: 12px;
+  min-width: 90px;
+  flex: 1 1 110px;
+}
+.action-box {
+  padding: 3px 8px;
+  border: 1px solid #d1d7e0;
+  background: #fff !important;
+  border-radius: 8px;
+  height: 32px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: none;
+  width: 100%;
+  box-sizing: border-box;
+}
+.sel-remove.action-box {
+  background: linear-gradient(180deg, #ffe8e8 0%, #ffd9d9 100%) !important;
+  border-color: #e57272;
+  color: #b91c1c;
+}
+
+/* 已选商品：数量 + 移除 */
+.selected-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 8px;
+}
+.selected-actions .same-size {
+  flex: 1 1 0;
+  width: auto !important;
+  height: 44px;
+  border-radius: 8px;
+  box-sizing: border-box;
+  font-size: 16px;
+}
+/* 数量输入框：黑色边框 */
+.selected-actions .selected-qty {
+  border: 1px solid #000;
+  background: #fff;
+  text-align: center;
+  -webkit-appearance: none;
+  -moz-appearance: textfield;
+  appearance: none;
+}
+.selected-actions .selected-qty::-webkit-inner-spin-button,
+.selected-actions .selected-qty::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+/* 移除按钮：红色背景 */
+.selected-actions .selected-remove {
+  border: 1px solid #e34a4a;
+  background: #fdeaea;
+  color: #e34a4a;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.selected-stepper {
+  display: flex;
+  gap: 6px;
+  flex: 1 1 0;
+  align-items: center;
+}
+.selected-step-btn {
+  width: 36px;
+  height: 44px;
+  border: 1px solid #d0d7de;
+  background: #fff;
+  border-radius: 8px;
+  font-size: 18px;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+    /* 数量步进器（表格与汇总通用） */
+    /* 产品列表数量胶囊输入框 */
+    .qty-wrap {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 32px;
+      border: none;
+      background: transparent;
+      padding: 0;
+    }
+    .qty-input,
+    .qty {
+      width: 64px;
+      height: 32px;
+      border-radius: 16px;
+      border: 1px solid #d0d7de;
+      background-color: #ffffff;
+      text-align: center;
+      font-size: 14px;
+      color: #111827;
+      box-sizing: border-box;
+      -webkit-appearance: none;
+      -moz-appearance: textfield;
+      appearance: none;
+      box-shadow: none;
+      outline: none;
+    }
+    .qty-input:focus,
+    .qty:focus {
+      border-color: #2563eb;
+      box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.15);
+    }
+    .qty-input::-webkit-inner-spin-button,
+    .qty-input::-webkit-outer-spin-button,
+    .qty::-webkit-inner-spin-button,
+    .qty::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+    .qty-input[type=number],
+    .qty[type=number] {
+      -moz-appearance: textfield;
+      appearance: textfield;
+    }
+    @media (max-width: 600px) {
+      .qty-input,
+      .qty {
+        width: 56px;
+        height: 30px;
+        font-size: 13px;
+      }
+    }
+    .selected-list .empty {
+      text-align: center;
+      color: #9ca3af;
+    }
     .customer {
       margin-top: 16px;
       font-size: 14px;
@@ -132,8 +334,32 @@
       border: 1px solid #d9dfe8;
       background: #fff;
       transition: border-color 0.2s, box-shadow 0.2s;
+      text-align: left;
+      word-break: break-word;
+      box-sizing: border-box;
     }
     .customer input:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(46,125,50,0.12);
+    }
+    .customer textarea {
+      width: 100%;
+      padding: 10px;
+      font-size: 14px;
+      margin-top: 4px;
+      border-radius: 10px;
+      border: 1px solid #d9dfe8;
+      background: #fff;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      resize: vertical;
+      min-height: 64px;
+      line-height: 1.5;
+      text-align: left;
+      word-break: break-word;
+      box-sizing: border-box;
+    }
+    .customer textarea:focus {
       outline: none;
       border-color: var(--primary);
       box-shadow: 0 0 0 3px rgba(46,125,50,0.12);
@@ -223,47 +449,53 @@
     .confirm-card {
       width: 100%;
       max-width: 820px;
-      background: #ffffff;
+      background: radial-gradient(circle at 25% 20%, #f6f9ff, #ffffff 65%);
       border-radius: 16px;
-      padding: 22px 18px 20px;
-      box-shadow: 0 12px 36px rgba(0,0,0,0.16);
+      padding: 24px 20px 22px;
+      box-shadow: 0 14px 34px rgba(0,0,0,0.14);
       border: 1px solid #e5e7eb;
     }
     .confirm-title {
-      font-size: 20px;
-      font-weight: 700;
+      font-size: 21px;
+      font-weight: 800;
       text-align: center;
-      margin-bottom: 14px;
+      letter-spacing: 0.2px;
+      margin-bottom: 16px;
     }
     .confirm-meta {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 6px;
       font-size: 15px;
       color: #374151;
       margin-bottom: 12px;
       line-height: 1.6;
+      word-break: break-word;
+      white-space: normal;
     }
-    .confirm-meta span {
-      margin-right: 12px;
+    .confirm-meta-bottom {
+      margin-top: 8px;
     }
     .confirm-table {
       width: 100%;
       border-collapse: collapse;
       font-size: 14px;
-      margin: 10px auto 12px;
+      margin: 12px auto 14px;
       border: 1px solid #e5e7eb;
       border-radius: 14px;
       overflow: hidden;
+      background: #fff;
     }
     .confirm-table th,
     .confirm-table td {
-      padding: 10px 6px;
+      padding: 11px 6px;
       border-bottom: 1px solid #edf0f3;
       text-align: center;
+      word-break: break-word;
+      white-space: normal;
     }
     .confirm-table th {
-      background: #f3f5f7;
+      background: linear-gradient(180deg, #f7f9fc 0%, #eef3fb 100%);
       font-size: 13px;
       color: #1f2937;
       font-weight: 700;
@@ -271,7 +503,7 @@
     .confirm-total-line {
       text-align: right;
       font-size: 17px;
-      font-weight: 700;
+      font-weight: 800;
       margin-top: 12px;
       color: #111827;
     }
@@ -336,12 +568,27 @@
       }
       table {
         font-size: 13px;
+        table-layout: fixed;
+      }
+      th:nth-child(5),
+      td:nth-child(5) {
+        width: 64px;
+      }
+      th:nth-child(4),
+      td:nth-child(4) {
+        width: 56px;
+      }
+      th:nth-child(2),
+      td:nth-child(2) {
+        width: auto;
       }
       th {
         font-size: 11px;
       }
       td {
         font-size: 12px;
+        word-break: break-word;
+        white-space: normal;
       }
       input[type="number"] {
         width: 64px;
@@ -358,6 +605,49 @@
       }
       button {
         padding: 11px 0;
+      }
+      .selected-box {
+        padding: 6px 8px;
+        border-radius: 10px;
+      }
+      .selected-list li {
+        padding: 4px 0;
+      }
+      .selected-list .sel-actions {
+        gap: 8px;
+        flex-wrap: wrap;
+      }
+      .sel-qty-btn {
+        width: 20px;
+        height: 20px;
+        border-radius: 5px;
+      }
+      .sel-remove {
+        padding: 4px 8px;
+        border-radius: 6px;
+        height: 30px;
+        min-width: 80px;
+        width: auto;
+        flex: 1 1 100px;
+        border-color: #d1d7e0;
+        background: linear-gradient(180deg, #ffe8e8 0%, #ffd9d9 100%) !important;
+      }
+      .qty-wrap {
+        gap: 2px;
+        padding: 3px 5px;
+        min-width: 60px;
+        max-width: 90px;
+        height: 30px;
+        flex: 1 1 100px;
+        border: 1px solid #d1d7e0;
+        background: #fff;
+        border-radius: 8px;
+      }
+      .qty-input {
+        width: 28px;
+        font-size: 13px;
+        height: 20px;
+        line-height: 20px;
       }
     }
   </style>
@@ -1785,6 +2075,7 @@
 </tr>
 
 <!-- 名扬 500克牛油 -->
+ 
 <tr class="item-row" data-name="名扬" data-spec="500克牛油" data-price="28">
   <td><input type="checkbox" class="item-check"></td>
   <td>名扬</td>
@@ -1907,6 +2198,16 @@
         </tbody>
       </table>
 
+      <div class="selected-box">
+        <div class="selected-header">
+          <strong>已选商品 <span id="selected-count">(0)</span></strong>
+          <span id="selected-total" class="selected-total">合计：0.00 元</span>
+        </div>
+        <ul id="selected-list" class="selected-list">
+          <li class="empty">暂无选中商品</li>
+        </ul>
+      </div>
+
       <div class="total">
         总价：<span id="total">0.00</span> 元
       </div>
@@ -1918,12 +2219,12 @@
           <input type="text" id="customer-name" placeholder="例如：解锦龙">
         </label>
         <label>
-          送货地址（可选）
-          <input type="text" id="customer-address" placeholder="如需送货请填写详细地址，未填默认自提/到店">
-        </label>
-        <label>
           联系方式（手机 / 微信）
           <input type="text" id="customer-contact" placeholder="方便商家联系确认订单">
+        </label>
+        <label>
+          送货地址（可选）
+          <textarea id="customer-address" rows="2" placeholder="如需送货请填写详细地址，未填默认自提/到店"></textarea>
         </label>
       </div>
 
@@ -1931,8 +2232,8 @@
 
       <div class="remark">
 备注：
-1、结算方式：收到我司开具发票后7天内付清全款；
-2、发货方式：合同签订后7天内发货；
+1、结算方式：确认单生成后请将确认单提交给商家，完成付款后商家安排配送；
+2、发货方式：上门派送；
 3、以上所有报价信息均为含税价格；
 4、如有任何疑问，请随时联系我们。
       </div>
@@ -1952,12 +2253,6 @@
   <div id="confirm-modal" class="confirm-mask" aria-hidden="true">
     <div class="confirm-card">
       <div class="confirm-title">报价确认单</div>
-      <div class="confirm-meta">
-        <span>客户：<span id="confirm-name">—</span></span>
-        <span>联系方式：<span id="confirm-contact">—</span></span>
-        <span>送货地址：<span id="confirm-address">—</span></span>
-        <span>下单时间：<span id="confirm-date">—</span></span>
-      </div>
       <table class="confirm-table">
         <thead>
           <tr>
@@ -1970,6 +2265,12 @@
         </thead>
         <tbody id="confirm-items-body"></tbody>
       </table>
+      <div class="confirm-meta confirm-meta-bottom">
+        <div>客户：<span id="confirm-name">—</span></div>
+        <div>联系方式：<span id="confirm-contact">—</span></div>
+        <div>送货地址：<span id="confirm-address">—</span></div>
+        <div>下单时间：<span id="confirm-date">—</span></div>
+      </div>
       <div class="confirm-total-line">确认金额：<span id="confirm-total">0.00</span> 元</div>
       <div class="confirm-notice">请核对品名、规格、数量和金额（满80元起送）后点击“确认无误，提交”。</div>
       <div class="confirm-actions">
@@ -1981,9 +2282,66 @@
 
   <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
   <script>
+    const MIN_TOTAL = 80;
+    const NAME_RE = /^[\u4e00-\u9fa5·]{2,8}$/; // 简单姓名校验：2-8个中文或中间点
+    const PHONE_RE = /^\d{11}$/; // 11位数字
+    // 静态模式：不向后端提交
+    const confirmModal = document.getElementById('confirm-modal');
+    const confirmItemsBody = document.getElementById('confirm-items-body');
+    const confirmSubmitBtn = document.getElementById('confirm-submit-btn');
+    const confirmBackBtn = document.getElementById('confirm-back-btn');
+    const selectedCountEl = document.getElementById('selected-count');
+    const selectedTotalEl = document.getElementById('selected-total');
+    const selectedListEl = document.getElementById('selected-list');
+    let cachedPayload = null;
+
+    function getRowKey(row) {
+      return `${row.dataset.name}__${row.dataset.spec}__${row.dataset.price}`;
+    }
+
+    // 为每一行打上 key，便于汇总区控制增删改
+    document.querySelectorAll('.item-row').forEach(row => {
+      row.dataset.key = getRowKey(row);
+    });
+
+    const escapeSelector = (str => {
+      if (window.CSS && CSS.escape) return CSS.escape;
+      return s => s.replace(/[^a-zA-Z0-9_-]/g, c => '\\' + c);
+    })();
+
+    function renderSelectedSummary(list, total) {
+      selectedCountEl.textContent = `(${list.length})`;
+      selectedTotalEl.textContent = `合计：${total.toFixed(2)} 元`;
+      selectedListEl.innerHTML = '';
+      if (!list.length) {
+        const li = document.createElement('li');
+        li.className = 'empty';
+        li.textContent = '暂无选中商品';
+        selectedListEl.appendChild(li);
+        return;
+      }
+      list.forEach(item => {
+        const li = document.createElement('li');
+        li.innerHTML = `
+          <div class="sel-name">${item.name}</div>
+          <div class="sel-meta">规格：${item.spec} ｜ 数量：${item.qty} ｜ 小计：${item.subtotal.toFixed(2)} 元</div>
+          <div class="selected-actions">
+            <div class="selected-stepper">
+              <button class="selected-step-btn" data-action="sub" data-key="${item.key}">-</button>
+              <input type="number" class="selected-qty same-size sel-qty-input" min="1" value="${item.qty}" data-key="${item.key}">
+              <button class="selected-step-btn" data-action="add" data-key="${item.key}">+</button>
+            </div>
+            <button class="selected-remove same-size sel-remove" data-key="${item.key}">移除</button>
+          </div>
+        `;
+        selectedListEl.appendChild(li);
+      });
+    }
+
     // ===== 1. 实时计算小计 & 总价 =====
     function recalc() {
       let total = 0;
+      const selectedList = [];
       document.querySelectorAll('.item-row').forEach(row => {
         const checkbox = row.querySelector('.item-check');
         const qtyInput = row.querySelector('.qty');
@@ -1994,11 +2352,19 @@
         let rowTotal = 0;
         if (checkbox.checked && qty > 0) {
           rowTotal = price * qty;
+          selectedList.push({
+            name: row.dataset.name,
+            spec: row.dataset.spec,
+            key: row.dataset.key,
+            qty,
+            subtotal: rowTotal
+          });
         }
         rowTotalCell.textContent = rowTotal.toFixed(2);
         total += rowTotal;
       });
       document.getElementById('total').textContent = total.toFixed(2);
+      renderSelectedSummary(selectedList, total);
     }
 
     // 格式化时间展示
@@ -2009,6 +2375,38 @@
       return date.toLocaleString('zh-CN', { hour12: false });
     }
 
+    // 包装报价表格数量输入为加减器
+    function enhanceQtyInputs() {
+      document.querySelectorAll('.qty').forEach(input => {
+        if (input.dataset.enhanced) return;
+        input.dataset.enhanced = '1';
+        input.classList.add('qty-input');
+
+        const wrapper = document.createElement('div');
+        wrapper.className = 'qty-wrap action-box';
+        const parentTd = input.parentElement;
+        wrapper.appendChild(input);
+        parentTd.appendChild(wrapper);
+
+        input.addEventListener('change', () => normalizeQty(input));
+        input.addEventListener('input', () => normalizeQty(input));
+      });
+    }
+
+    function normalizeQty(input) {
+      const min = Number(input.getAttribute('min') || 1);
+      let value = Number(input.value) || min;
+      value = Math.max(min, value);
+      input.value = value;
+      const row = input.closest('.item-row');
+      if (row) {
+        const checkbox = row.querySelector('.item-check');
+        if (checkbox && value > 0) {
+          checkbox.checked = true;
+        }
+      }
+    }
+
     // 保存确认单卡片为图片
     async function saveConfirmSnapshot(filename = '确认单.png') {
       if (typeof window.html2canvas !== 'function') return false;
@@ -2016,8 +2414,9 @@
       if (!card) return false;
       try {
         card.classList.add('capture-ready');
+        const scale = Math.min(3, Math.max(2, window.devicePixelRatio || 2)); // 提升清晰度
         const canvas = await window.html2canvas(card, {
-          scale: 2,
+          scale: Math.max(scale, 3), // 提升导出清晰度
           backgroundColor: '#f7f8fa',
           useCORS: true
         });
@@ -2029,6 +2428,11 @@
         document.body.appendChild(a);
         a.click();
         a.remove();
+        // 便于手机长按保存到相册，再打开一个新标签显示图片
+        const imgWin = window.open();
+        if (imgWin) {
+          imgWin.document.write(`<img src="${dataUrl}" style="width:100%;height:auto;">`);
+        }
         return true;
       } catch (e) {
         card.classList.remove('capture-ready');
@@ -2042,20 +2446,60 @@
       el.addEventListener('change', recalc);
       el.addEventListener('input', recalc);
     });
+    enhanceQtyInputs();
+
+    // 汇总区事件代理：数量输入 & 移除
+    selectedListEl.addEventListener('input', e => {
+      const target = e.target;
+      if (target.classList.contains('sel-qty-input')) {
+        const key = target.dataset.key;
+        const row = key && document.querySelector(`.item-row[data-key="${escapeSelector(key)}"]`);
+        if (row) {
+          const qtyInput = row.querySelector('.qty');
+          qtyInput.value = target.value;
+          normalizeQty(qtyInput);
+          recalc();
+        }
+      }
+    });
+    selectedListEl.addEventListener('click', e => {
+      const btn = e.target.closest('.sel-remove');
+      if (btn) {
+        const key = btn.dataset.key;
+        const row = key && document.querySelector(`.item-row[data-key="${escapeSelector(key)}"]`);
+        if (row) {
+          const checkbox = row.querySelector('.item-check');
+          checkbox.checked = false;
+          recalc();
+        }
+        return;
+      }
+
+      const stepBtn = e.target.closest('.selected-step-btn');
+      if (stepBtn) {
+        const { action, key } = stepBtn.dataset;
+        const row = key && document.querySelector(`.item-row[data-key="${escapeSelector(key)}"]`);
+        if (!row) return;
+        const input = selectedListEl.querySelector(`.sel-qty-input[data-key="${key}"]`);
+        const mainInput = row.querySelector('.qty');
+        const min = Number(mainInput?.getAttribute('min') || 1);
+        let value = Number(mainInput?.value || input?.value || min);
+        if (action === 'add') value += 1;
+        if (action === 'sub') value = Math.max(min, value - 1);
+        if (input) input.value = value;
+        if (mainInput) {
+          mainInput.value = value;
+          const checkbox = row.querySelector('.item-check');
+          if (checkbox && value > 0) checkbox.checked = true;
+        }
+        recalc();
+      }
+    });
 
     // 页面加载后先算一遍（默认全 0）
     recalc();
 
     // ===== 2. 生成确认单，确认后再提交 =====
-    const MIN_TOTAL = 80;
-    const NAME_RE = /^[\u4e00-\u9fa5·]{2,8}$/; // 简单姓名校验：2-8个中文或中间点
-    const PHONE_RE = /^\d{11}$/; // 11位数字
-    // 静态模式：不向后端提交
-    const confirmModal = document.getElementById('confirm-modal');
-    const confirmItemsBody = document.getElementById('confirm-items-body');
-    const confirmSubmitBtn = document.getElementById('confirm-submit-btn');
-    const confirmBackBtn = document.getElementById('confirm-back-btn');
-    let cachedPayload = null;
 
     function collectPayload() {
       const name = document.getElementById('customer-name').value.trim();
