@@ -473,8 +473,7 @@
       padding: 32px 20px 48px; /* 下方额外留白，便于按钮下有呼吸区 */
       box-shadow: 0 14px 34px rgba(0,0,0,0.14);
       border: 1px solid #e5e7eb;
-      max-height: calc(100vh - 32px);
-      overflow-y: auto;
+      overflow: visible;
       -webkit-overflow-scrolling: touch;
       touch-action: pan-y;
     }
@@ -713,7 +712,8 @@
         width: 94vw;
         padding: 18px 12px 70px;
         border-radius: 14px;
-        max-height: calc(100vh - 18px);
+        max-height: none;
+        overflow: visible;
       }
       .confirm-title {
         font-size: 18px;
@@ -2873,7 +2873,8 @@
       confirmModal.setAttribute('aria-hidden', 'false');
       document.body.style.overflow = 'hidden';
       // 进入确认单时强制回到顶部，确保全屏展示（移动端填写后可能滚到底部）
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      window.scrollTo({ top: 0, behavior: 'auto' });
+      confirmModal.scrollTop = 0;
       const confirmCardEl = document.querySelector('.confirm-card');
       if (confirmCardEl) {
         confirmCardEl.scrollTop = 0;
