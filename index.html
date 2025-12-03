@@ -457,7 +457,9 @@
       align-items: flex-start;
       justify-content: center;
       padding: 16px 12px;
-      overflow: hidden; /* 只让确认卡片内部滚动 */
+      overflow-y: auto; /* 允许整体滚动，避免内容被截断 */
+      -webkit-overflow-scrolling: touch;
+      overscroll-behavior: contain;
       z-index: 999;
     }
     .confirm-mask.show {
@@ -474,6 +476,7 @@
       max-height: calc(100vh - 32px);
       overflow-y: auto;
       -webkit-overflow-scrolling: touch;
+      touch-action: pan-y;
     }
     .confirm-title {
       font-size: 21px;
@@ -559,6 +562,12 @@
       border-radius: 16px;
       padding: 18px 16px 18px;
       max-width: 860px;
+    }
+    /* 捕获全图时解除高度限制，确保截图不被裁切 */
+    .confirm-card.full-capture {
+      max-height: none !important;
+      height: auto !important;
+      overflow: visible !important;
     }
     .confirm-card.capture-ready .confirm-actions {
       display: none;
@@ -2607,14 +2616,25 @@
       const card = document.querySelector('.confirm-card');
       if (!card) return false;
       try {
-        card.classList.add('capture-ready');
+        const prevScroll = card.scrollTop;
+        const prevMaskOverflow = confirmModal ? confirmModal.style.overflow : '';
+        card.classList.add('capture-ready', 'full-capture');
+        if (confirmModal) {
+          confirmModal.style.overflow = 'auto';
+          confirmModal.scrollTop = 0;
+        }
+        card.scrollTop = 0;
         const scale = Math.min(3, Math.max(2, window.devicePixelRatio || 2)); // 提升清晰度
         const canvas = await window.html2canvas(card, {
           scale: Math.max(scale, 3), // 提升导出清晰度
           backgroundColor: '#f7f8fa',
           useCORS: true
         });
-        card.classList.remove('capture-ready');
+        card.classList.remove('capture-ready', 'full-capture');
+        card.scrollTop = prevScroll;
+        if (confirmModal) {
+          confirmModal.style.overflow = prevMaskOverflow;
+        }
         const dataUrl = canvas.toDataURL('image/png');
         lastConfirmDataUrl = dataUrl;
 
