@@ -550,14 +550,59 @@
       margin-bottom: 12px;
     }
 
+    /* 确认单预览（微信长按保存） */
+    .confirm-preview {
+      position: fixed;
+      inset: 0;
+      background: #f5f5f5;
+      z-index: 9999;
+      display: none;
+      justify-content: center;
+      align-items: center;
+      overflow: auto;
+    }
+    .confirm-preview.show {
+      display: flex;
+    }
+    .confirm-preview-inner {
+      width: 100%;
+      padding: 16px;
+      box-sizing: border-box;
+      text-align: center;
+    }
+    .confirm-preview-img {
+      max-width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+      display: block;
+      margin: 0 auto;
+    }
+    .confirm-preview-tip {
+      margin-top: 12px;
+      font-size: 13px;
+      color: #888;
+    }
+    .confirm-preview-close {
+      margin-top: 16px;
+      padding: 8px 16px;
+      border-radius: 8px;
+      border: none;
+      background: #409eff;
+      color: #fff;
+      font-size: 14px;
+      cursor: pointer;
+    }
+
     /* 移动端优化 */
     @media (max-width: 640px) {
       body {
         padding: 10px;
+        background: #f5f7fb;
       }
       .container {
         padding: 12px 12px 18px;
         border-radius: 14px;
+        box-shadow: 0 10px 24px rgba(0,0,0,0.08);
       }
       h1 {
         font-size: 18px;
@@ -569,6 +614,7 @@
       table {
         font-size: 13px;
         table-layout: fixed;
+        box-shadow: 0 6px 14px rgba(0,0,0,0.04);
       }
       th:nth-child(5),
       td:nth-child(5) {
@@ -584,11 +630,13 @@
       }
       th {
         font-size: 11px;
+        padding: 8px 4px;
       }
       td {
         font-size: 12px;
         word-break: break-word;
         white-space: normal;
+        padding: 10px 4px;
       }
       input[type="number"] {
         width: 64px;
@@ -661,9 +709,9 @@
     </div>
 
     <div class="info-row">
-      <span>对接人：赵攀、李雨</span>
-      <span>门店地址：民生路市场 安井火锅食材</span>
-      <span>联系电话📞：15191314973、19723026666</span>
+      <span>对接人👨/👩：赵攀、李雨</span>
+      <span>门店地址🏠：民生路市场 安井火锅食材</span>
+      <span>联系电话📞：19723026666、15191314973</span>
     </div>
 
     <form id="quote-form">
@@ -680,1520 +728,1534 @@
         </thead>
         <tbody>
           <!-- 金钻小肥羊肉卷 -->
-<tr class="item-row" data-name="金钻小肥羊肉卷" data-spec="1" data-price="32">
-  <td><input type="checkbox" class="item-check"></td>
-  <td>金钻小肥羊肉卷</td>
-  <td>1</td>
-  <td>32</td>
-  <td><input type="number" class="qty" value="1" min="1"></td>
-  <td class="row-total">0.00</td>
-</tr>
-<tr class="extra-row">
-  <td colspan="6">
-    表格信息：品类名称：金钻小肥羊肉卷　净重量/规格：1　价格：32 元　备注：无
-  </td>
-</tr>
-
-<!-- 雪花肥牛肉卷 -->
-<tr class="item-row" data-name="雪花肥牛肉卷" data-spec="1" data-price="32">
-  <td><input type="checkbox" class="item-check"></td>
-  <td>雪花肥牛肉卷</td>
-  <td>1</td>
-  <td>32</td>
-  <td><input type="number" class="qty" value="1" min="1"></td>
-  <td class="row-total">0.00</td>
-</tr>
-<tr class="extra-row">
-  <td colspan="6">
-    表格信息：品类名称：雪花肥牛肉卷　净重量/规格：1　价格：32 元　备注：无
-  </td>
-</tr>
-
-<!-- 牛板腱肉卷 -->
-<tr class="item-row" data-name="牛板腱肉卷" data-spec="1" data-price="39">
-  <td><input type="checkbox" class="item-check"></td>
-  <td>牛板腱肉卷</td>
-  <td>1</td>
-  <td>39</td>
-  <td><input type="number" class="qty" value="1" min="1"></td>
-  <td class="row-total">0.00</td>
-</tr>
-<tr class="extra-row">
-  <td colspan="6">
-    表格信息：品类名称：牛板腱肉卷　净重量/规格：1　价格：39 元　备注：无
-  </td>
-</tr>
-
-<!-- 高钙羊肉卷 -->
-<tr class="item-row" data-name="高钙羊肉卷" data-spec="1" data-price="36">
-  <td><input type="checkbox" class="item-check"></td>
-  <td>高钙羊肉卷</td>
-  <td>1</td>
-  <td>36</td>
-  <td><input type="number" class="qty" value="1" min="1"></td>
-  <td class="row-total">0.00</td>
-</tr>
-<tr class="extra-row">
-  <td colspan="6">
-    表格信息：品类名称：高钙羊肉卷　净重量/规格：1　价格：36 元　备注：无
-  </td>
-</tr>
-
-<!-- 安井丸子 -->
-<tr class="item-row" data-name="安井丸子" data-spec="糖果装1" data-price="16">
-  <td><input type="checkbox" class="item-check"></td>
-  <td>安井丸子</td>
-  <td>糖果装1袋</td>
-  <td>16</td>
-  <td><input type="number" class="qty" value="1" min="1"></td>
-  <td class="row-total">0.00</td>
-</tr>
-<tr class="extra-row">
-  <td colspan="6">
-    表格信息：品类名称：安井丸子　净重量/规格：糖果装1袋　价格：16 元　备注：无
-  </td>
-</tr>
-
-<!-- 安井丸子（散称） -->
-<tr class="item-row" data-name="安井丸子（散称）" data-spec="1" data-price="12">
-  <td><input type="checkbox" class="item-check"></td>
-  <td>安井丸子（散称）</td>
-  <td>1</td>
-  <td>12</td>
-  <td><input type="number" class="qty" value="1" min="1"></td>
-  <td class="row-total">0.00</td>
-</tr>
-<tr class="extra-row">
-  <td colspan="6">
-    表格信息：品类名称：安井丸子（散称）　净重量/规格：1　价格：12 元　备注：可备注种类
-  </td>
-</tr>
-
-<!-- 鱼籽福袋 -->
-<tr class="item-row" data-name="鱼籽福袋" data-spec="锁鲜装" data-price="20">
-  <td><input type="checkbox" class="item-check"></td>
-  <td>鱼籽福袋</td>
-  <td>锁鲜装</td>
-  <td>20</td>
-  <td><input type="number" class="qty" value="1" min="1"></td>
-  <td class="row-total">0.00</td>
-</tr>
-<tr class="extra-row">
-  <td colspan="6">
-    表格信息：品类名称：鱼籽福袋　净重量/规格：锁鲜装　价格：20 元　备注：无
-  </td>
-</tr>
-
-<!-- 鱼籽包 -->
-<tr class="item-row" data-name="鱼籽包" data-spec="锁鲜装" data-price="15">
-  <td><input type="checkbox" class="item-check"></td>
-  <td>鱼籽包</td>
-  <td>锁鲜装</td>
-  <td>15</td>
-  <td><input type="number" class="qty" value="1" min="1"></td>
-  <td class="row-total">0.00</td>
-</tr>
-<tr class="extra-row">
-  <td colspan="6">
-    表格信息：品类名称：鱼籽包　净重量/规格：锁鲜装　价格：15 元　备注：无
-  </td>
-</tr>
-
-<!-- 撒尿牛丸 -->
-<tr class="item-row" data-name="撒尿牛丸" data-spec="锁鲜装" data-price="18">
-  <td><input type="checkbox" class="item-check"></td>
-  <td>撒尿牛丸</td>
-  <td>锁鲜装</td>
-  <td>18</td>
-  <td><input type="number" class="qty" value="1" min="1"></td>
-  <td class="row-total">0.00</td>
-</tr>
-<tr class="extra-row">
-  <td colspan="6">
-    表格信息：品类名称：撒尿牛丸　净重量/规格：锁鲜装　价格：18 元　备注：无
-  </td>
-</tr>
-
-<!-- 嫩鱼丸 -->
-<tr class="item-row" data-name="嫩鱼丸" data-spec="锁鲜装" data-price="12">
-  <td><input type="checkbox" class="item-check"></td>
-  <td>嫩鱼丸</td>
-  <td>锁鲜装</td>
-  <td>12</td>
-  <td><input type="number" class="qty" value="1" min="1"></td>
-  <td class="row-total">0.00</td>
-</tr>
-<tr class="extra-row">
-  <td colspan="6">
-    表格信息：品类名称：嫩鱼丸　净重量/规格：锁鲜装　价格：12 元　备注：无
-  </td>
-</tr>
-
-<!-- 炸鱼蛋 -->
-<tr class="item-row" data-name="炸鱼蛋" data-spec="锁鲜装" data-price="14">
-  <td><input type="checkbox" class="item-check"></td>
-  <td>炸鱼蛋</td>
-  <td>锁鲜装</td>
-  <td>14</td>
-  <td><input type="number" class="qty" value="1" min="1"></td>
-  <td class="row-total">0.00</td>
-</tr>
-<tr class="extra-row">
-  <td colspan="6">
-    表格信息：品类名称：炸鱼蛋　净重量/规格：锁鲜装　价格：14 元　备注：无
-  </td>
-</tr>
-
-<!-- V型蟹柳 -->
-<tr class="item-row" data-name="V型蟹柳" data-spec="锁鲜装" data-price="16">
-  <td><input type="checkbox" class="item-check"></td>
-  <td>V型蟹柳</td>
-  <td>锁鲜装</td>
-  <td>16</td>
-  <td><input type="number" class="qty" value="1" min="1"></td>
-  <td class="row-total">0.00</td>
-</tr>
-<tr class="extra-row">
-  <td colspan="6">
-    表格信息：品类名称：V型蟹柳　净重量/规格：锁鲜装　价格：16 元　备注：无
-  </td>
-</tr>
-
-<!-- 蟹棒 -->
-<tr class="item-row" data-name="蟹棒" data-spec="锁鲜装" data-price="15">
-  <td><input type="checkbox" class="item-check"></td>
-  <td>蟹棒</td>
-  <td>锁鲜装</td>
-  <td>15</td>
-  <td><input type="number" class="qty" value="1" min="1"></td>
-  <td class="row-total">0.00</td>
-</tr>
-<tr class="extra-row">
-  <td colspan="6">
-    表格信息：品类名称：蟹棒　净重量/规格：锁鲜装　价格：15 元　备注：无
-  </td>
-</tr>
-
-<!-- 龙虾球 -->
-<tr class="item-row" data-name="龙虾球" data-spec="锁鲜装" data-price="15">
-  <td><input type="checkbox" class="item-check"></td>
-  <td>龙虾球</td>
-  <td>锁鲜装</td>
-  <td>15</td>
-  <td><input type="number" class="qty" value="1" min="1"></td>
-  <td class="row-total">0.00</td>
-</tr>
-<tr class="extra-row">
-  <td colspan="6">
-    表格信息：品类名称：龙虾球　净重量/规格：锁鲜装　价格：15 元　备注：无
-  </td>
-</tr>
-
-<!-- 芝士鱼豆腐 -->
-<tr class="item-row" data-name="芝士鱼豆腐" data-spec="锁鲜装" data-price="16">
-  <td><input type="checkbox" class="item-check"></td>
-  <td>芝士鱼豆腐</td>
-  <td>锁鲜装</td>
-  <td>16</td>
-  <td><input type="number" class="qty" value="1" min="1"></td>
-  <td class="row-total">0.00</td>
-</tr>
-<tr class="extra-row">
-  <td colspan="6">
-    表格信息：品类名称：芝士鱼豆腐　净重量/规格：锁鲜装　价格：16 元　备注：无
-  </td>
-</tr>
-
-<!-- 鱼豆腐 -->
-<tr class="item-row" data-name="鱼豆腐" data-spec="锁鲜装" data-price="14">
-  <td><input type="checkbox" class="item-check"></td>
-  <td>鱼豆腐</td>
-  <td>锁鲜装</td>
-  <td>14</td>
-  <td><input type="number" class="qty" value="1" min="1"></td>
-  <td class="row-total">0.00</td>
-</tr>
-<tr class="extra-row">
-  <td colspan="6">
-    表格信息：品类名称：鱼豆腐　净重量/规格：锁鲜装　价格：14 元　备注：无
-  </td>
-</tr>
-
-<!-- 墨鱼丸 -->
-<tr class="item-row" data-name="墨鱼丸" data-spec="锁鲜装" data-price="13">
-  <td><input type="checkbox" class="item-check"></td>
-  <td>墨鱼丸</td>
-  <td>锁鲜装</td>
-  <td>13</td>
-  <td><input type="number" class="qty" value="1" min="1"></td>
-  <td class="row-total">0.00</td>
-</tr>
-<tr class="extra-row">
-  <td colspan="6">
-    表格信息：品类名称：墨鱼丸　净重量/规格：锁鲜装　价格：13 元　备注：无
-  </td>
-</tr>
-
-<!-- 黄金脆皮肠 -->
-<tr class="item-row" data-name="黄金脆皮肠" data-spec="锁鲜装" data-price="15">
-  <td><input type="checkbox" class="item-check"></td>
-  <td>黄金脆皮肠</td>
-  <td>锁鲜装</td>
-  <td>15</td>
-  <td><input type="number" class="qty" value="1" min="1"></td>
-  <td class="row-total">0.00</td>
-</tr>
-<tr class="extra-row">
-  <td colspan="6">
-    表格信息：品类名称：黄金脆皮肠　净重量/规格：锁鲜装　价格：15 元　备注：无
-  </td>
-</tr>
-
-<!-- 台式香肠 -->
-<tr class="item-row" data-name="台式香肠" data-spec="锁鲜装" data-price="18">
-  <td><input type="checkbox" class="item-check"></td>
-  <td>台式香肠</td>
-  <td>锁鲜装</td>
-  <td>18</td>
-  <td><input type="number" class="qty" value="1" min="1"></td>
-  <td class="row-total">0.00</td>
-</tr>
-<tr class="extra-row">
-  <td colspan="6">
-    表格信息：品类名称：台式香肠　净重量/规格：锁鲜装　价格：18 元　备注：无
-  </td>
-</tr>
-
-<!-- 台式脆肠 -->
-<tr class="item-row" data-name="台式脆肠" data-spec="锁鲜装" data-price="18">
-  <td><input type="checkbox" class="item-check"></td>
-  <td>台式脆肠</td>
-  <td>锁鲜装</td>
-  <td>18</td>
-  <td><input type="number" class="qty" value="1" min="1"></td>
-  <td class="row-total">0.00</td>
-</tr>
-<tr class="extra-row">
-  <td colspan="6">
-    表格信息：品类名称：台式脆肠　净重量/规格：锁鲜装　价格：18 元　备注：无
-  </td>
-</tr>
-
-<!-- 关东煮 -->
-<tr class="item-row" data-name="关东煮" data-spec="锁鲜装" data-price="18">
-  <td><input type="checkbox" class="item-check"></td>
-  <td>关东煮</td>
-  <td>锁鲜装</td>
-  <td>18</td>
-  <td><input type="number" class="qty" value="1" min="1"></td>
-  <td class="row-total">0.00</td>
-</tr>
-<tr class="extra-row">
-  <td colspan="6">
-    表格信息：品类名称：关东煮　净重量/规格：锁鲜装　价格：18 元　备注：无
-  </td>
-</tr>
-
-<!-- 飘香辣骨 -->
-<tr class="item-row" data-name="飘香辣骨" data-spec="锁鲜装" data-price="22">
-  <td><input type="checkbox" class="item-check"></td>
-  <td>飘香辣骨</td>
-  <td>锁鲜装</td>
-  <td>22</td>
-  <td><input type="number" class="qty" value="1" min="1"></td>
-  <td class="row-total">0.00</td>
-</tr>
-<tr class="extra-row">
-  <td colspan="6">
-    表格信息：品类名称：飘香辣骨　净重量/规格：锁鲜装　价格：22 元　备注：无
-  </td>
-</tr>
-
-<!-- 熏香翅中 -->
-<tr class="item-row" data-name="熏香翅中" data-spec="锁鲜装" data-price="24">
-  <td><input type="checkbox" class="item-check"></td>
-  <td>熏香翅中</td>
-  <td>锁鲜装</td>
-  <td>24</td>
-  <td><input type="number" class="qty" value="1" min="1"></td>
-  <td class="row-total">0.00</td>
-</tr>
-<tr class="extra-row">
-  <td colspan="6">
-    表格信息：品类名称：熏香翅中　净重量/规格：锁鲜装　价格：24 元　备注：无
-  </td>
-</tr>
-
-<!-- 烤翅中 -->
-<tr class="item-row" data-name="烤翅中" data-spec="锁鲜装" data-price="24">
-  <td><input type="checkbox" class="item-check"></td>
-  <td>烤翅中</td>
-  <td>锁鲜装</td>
-  <td>24</td>
-  <td><input type="number" class="qty" value="1" min="1"></td>
-  <td class="row-total">0.00</td>
-</tr>
-<tr class="extra-row">
-  <td colspan="6">
-    表格信息：品类名称：烤翅中　净重量/规格：锁鲜装　价格：24 元　备注：无
-  </td>
-</tr>
-
-<!-- 鸡软骨 -->
-<tr class="item-row" data-name="鸡软骨" data-spec="锁鲜装" data-price="26">
-  <td><input type="checkbox" class="item-check"></td>
-  <td>鸡软骨</td>
-  <td>锁鲜装</td>
-  <td>26</td>
-  <td><input type="number" class="qty" value="1" min="1"></td>
-  <td class="row-total">0.00</td>
-</tr>
-<tr class="extra-row">
-  <td colspan="6">
-    表格信息：品类名称：鸡软骨　净重量/规格：锁鲜装　价格：26 元　备注：无
-  </td>
-</tr>
-
-<!-- 烤鸡柳 -->
-<tr class="item-row" data-name="烤鸡柳" data-spec="锁鲜装" data-price="20">
-  <td><input type="checkbox" class="item-check"></td>
-  <td>烤鸡柳</td>
-  <td>锁鲜装</td>
-  <td>20</td>
-  <td><input type="number" class="qty" value="1" min="1"></td>
-  <td class="row-total">0.00</td>
-</tr>
-<tr class="extra-row">
-  <td colspan="6">
-    表格信息：品类名称：烤鸡柳　净重量/规格：锁鲜装　价格：20 元　备注：无
-  </td>
-</tr>
-
-<!-- 芝士肉肠 -->
-<tr class="item-row" data-name="芝士肉肠" data-spec="锁鲜装" data-price="16">
-  <td><input type="checkbox" class="item-check"></td>
-  <td>芝士肉肠</td>
-  <td>锁鲜装</td>
-  <td>16</td>
-  <td><input type="number" class="qty" value="1" min="1"></td>
-  <td class="row-total">0.00</td>
-</tr>
-<tr class="extra-row">
-  <td colspan="6">
-    表格信息：品类名称：芝士肉肠　净重量/规格：锁鲜装　价格：16 元　备注：无
-  </td>
-</tr>
-
-<!-- 黑松露肉肠 -->
-<tr class="item-row" data-name="黑松露肉肠" data-spec="锁鲜装" data-price="20">
-  <td><input type="checkbox" class="item-check"></td>
-  <td>黑松露肉肠</td>
-  <td>锁鲜装</td>
-  <td>20</td>
-  <td><input type="number" class="qty" value="1" min="1"></td>
-  <td class="row-total">0.00</td>
-</tr>
-<tr class="extra-row">
-  <td colspan="6">
-    表格信息：品类名称：黑松露肉肠　净重量/规格：锁鲜装　价格：20 元　备注：无
-  </td>
-</tr>
-
-<!-- 火山石烤肠 -->
-<tr class="item-row" data-name="火山石烤肠" data-spec="黑椒|原味" data-price="20">
-  <td><input type="checkbox" class="item-check"></td>
-  <td>火山石烤肠</td>
-  <td>黑椒|原味</td>
-  <td>20</td>
-  <td><input type="number" class="qty" value="1" min="1"></td>
-  <td class="row-total">0.00</td>
-</tr>
-<tr class="extra-row">
-  <td colspan="6">
-    表格信息：品类名称：火山石烤肠　净重量/规格：黑椒|原味　价格：20 元　备注：无
-  </td>
-</tr>
-
-<!-- 虾滑 -->
-<tr class="item-row" data-name="虾滑" data-spec="1" data-price="15">
-  <td><input type="checkbox" class="item-check"></td>
-  <td>虾滑</td>
-  <td>1</td>
-  <td>15</td>
-  <td><input type="number" class="qty" value="1" min="1"></td>
-  <td class="row-total">0.00</td>
-</tr>
-<tr class="extra-row">
-  <td colspan="6">
-    表格信息：品类名称：虾滑　净重量/规格：1　价格：15 元　备注：无
-  </td>
-</tr>
-
-<!-- 鸭肠 -->
-<tr class="item-row" data-name="鸭肠" data-spec="1" data-price="12">
-  <td><input type="checkbox" class="item-check"></td>
-  <td>鸭肠</td>
-  <td>1</td>
-  <td>12</td>
-  <td><input type="number" class="qty" value="1" min="1"></td>
-  <td class="row-total">0.00</td>
-</tr>
-<tr class="extra-row">
-  <td colspan="6">
-    表格信息：品类名称：鸭肠　净重量/规格：1　价格：12 元　备注：无
-  </td>
-</tr>
-
-<!-- 小墨鱼仔 -->
-<tr class="item-row" data-name="小墨鱼仔" data-spec="1" data-price="25">
-  <td><input type="checkbox" class="item-check"></td>
-  <td>小墨鱼仔</td>
-  <td>1</td>
-  <td>25</td>
-  <td><input type="number" class="qty" value="1" min="1"></td>
-  <td class="row-total">0.00</td>
-</tr>
-<tr class="extra-row">
-  <td colspan="6">
-    表格信息：品类名称：小墨鱼仔　净重量/规格：1　价格：25 元　备注：无
-  </td>
-</tr>
-
-<!-- 小八爪鱼 -->
-<tr class="item-row" data-name="小八爪鱼" data-spec="1" data-price="30">
-  <td><input type="checkbox" class="item-check"></td>
-  <td>小八爪鱼</td>
-  <td>1</td>
-  <td>30</td>
-  <td><input type="number" class="qty" value="1" min="1"></td>
-  <td class="row-total">0.00</td>
-</tr>
-<tr class="extra-row">
-  <td colspan="6">
-    表格信息：品类名称：小八爪鱼　净重量/规格：1　价格：30 元　备注：无
-  </td>
-</tr>
-
-<!-- 北极甜虾 -->
-<tr class="item-row" data-name="北极甜虾" data-spec="1" data-price="32">
-  <td><input type="checkbox" class="item-check"></td>
-  <td>北极甜虾</td>
-  <td>1</td>
-  <td>32</td>
-  <td><input type="number" class="qty" value="1" min="1"></td>
-  <td class="row-total">0.00</td>
-</tr>
-<tr class="extra-row">
-  <td colspan="6">
-    表格信息：品类名称：北极甜虾　净重量/规格：1　价格：32 元　备注：无
-  </td>
-</tr>
-
-<!-- 虾仁 -->
-<tr class="item-row" data-name="虾仁" data-spec="1" data-price="35">
-  <td><input type="checkbox" class="item-check"></td>
-  <td>虾仁</td>
-  <td>1</td>
-  <td>35</td>
-  <td><input type="number" class="qty" value="1" min="1"></td>
-  <td class="row-total">0.00</td>
-</tr>
-<tr class="extra-row">
-  <td colspan="6">
-    表格信息：品类名称：虾仁　净重量/规格：1　价格：35 元　备注：无
-  </td>
-</tr>
-
-<!-- 带鱼 -->
-<tr class="item-row" data-name="带鱼" data-spec="1" data-price="16">
-  <td><input type="checkbox" class="item-check"></td>
-  <td>带鱼</td>
-  <td>1</td>
-  <td>16</td>
-  <td><input type="number" class="qty" value="1" min="1"></td>
-  <td class="row-total">0.00</td>
-</tr>
-<tr class="extra-row">
-  <td colspan="6">
-    表格信息：品类名称：带鱼　净重量/规格：1　价格：16 元　备注：无
-  </td>
-</tr>
-
-<!-- 巴沙鱼 -->
-<tr class="item-row" data-name="巴沙鱼" data-spec="1" data-price="12">
-  <td><input type="checkbox" class="item-check"></td>
-  <td>巴沙鱼</td>
-  <td>1</td>
-  <td>12</td>
-  <td><input type="number" class="qty" value="1" min="1"></td>
-  <td class="row-total">0.00</td>
-</tr>
-<tr class="extra-row">
-  <td colspan="6">
-    表格信息：品类名称：巴沙鱼　净重量/规格：1　价格：12 元　备注：无
-  </td>
-</tr>
-
-<!-- 青虾 -->
-<tr class="item-row" data-name="青虾" data-spec="净重2.8斤" data-price="68">
-  <td><input type="checkbox" class="item-check"></td>
-  <td>青虾</td>
-  <td>净重2.8斤</td>
-  <td>68</td>
-  <td><input type="number" class="qty" value="1" min="1"></td>
-  <td class="row-total">0.00</td>
-</tr>
-<tr class="extra-row">
-  <td colspan="6">
-    表格信息：品类名称：青虾　净重量/规格：净重2.8斤　价格：68 元　备注：无
-  </td>
-</tr>
-
-<!-- 虾尾 -->
-<tr class="item-row" data-name="虾尾" data-spec="1" data-price="18">
-  <td><input type="checkbox" class="item-check"></td>
-  <td>虾尾</td>
-  <td>1</td>
-  <td>18</td>
-  <td><input type="number" class="qty" value="1" min="1"></td>
-  <td class="row-total">0.00</td>
-</tr>
-<tr class="extra-row">
-  <td colspan="6">
-    表格信息：品类名称：虾尾　净重量/规格：1　价格：18 元　备注：无
-  </td>
-</tr>
-
-<!-- 毛肚 -->
-<tr class="item-row" data-name="毛肚" data-spec="1" data-price="32">
-  <td><input type="checkbox" class="item-check"></td>
-  <td>毛肚</td>
-  <td>1</td>
-  <td>32</td>
-  <td><input type="number" class="qty" value="1" min="1"></td>
-  <td class="row-total">0.00</td>
-</tr>
-<tr class="extra-row">
-  <td colspan="6">
-    表格信息：品类名称：毛肚　净重量/规格：1　价格：32 元　备注：无
-  </td>
-</tr>
-
-<!-- 烤肠 -->
-<tr class="item-row" data-name="烤肠" data-spec="一公斤" data-price="25">
-  <td><input type="checkbox" class="item-check"></td>
-  <td>烤肠</td>
-  <td>一公斤</td>
-  <td>25</td>
-  <td><input type="number" class="qty" value="1" min="1"></td>
-  <td class="row-total">0.00</td>
-</tr>
-<tr class="extra-row">
-  <td colspan="6">
-    表格信息：品类名称：烤肠　净重量/规格：一公斤　价格：25 元　备注：无
-  </td>
-</tr>
-
-<!-- 骨肉相连 -->
-<tr class="item-row" data-name="骨肉相连" data-spec="一公斤" data-price="25">
-  <td><input type="checkbox" class="item-check"></td>
-  <td>骨肉相连</td>
-  <td>一公斤</td>
-  <td>25</td>
-  <td><input type="number" class="qty" value="1" min="1"></td>
-  <td class="row-total">0.00</td>
-</tr>
-<tr class="extra-row">
-  <td colspan="6">
-    表格信息：品类名称：骨肉相连　净重量/规格：一公斤　价格：25 元　备注：无
-  </td>
-</tr>
-
-<!-- 编写鸡柳 -->
-<tr class="item-row" data-name="编写鸡柳" data-spec="一公斤" data-price="25">
-  <td><input type="checkbox" class="item-check"></td>
-  <td>编写鸡柳</td>
-  <td>一公斤</td>
-  <td>25</td>
-  <td><input type="number" class="qty" value="1" min="1"></td>
-  <td class="row-total">0.00</td>
-</tr>
-<tr class="extra-row">
-  <td colspan="6">
-    表格信息：名称：编写鸡柳　规格：一公斤　单价：25 元　合计（表格）：—
-  </td>
-</tr>
-
-<!-- 烤翅 1 -->
-<tr class="item-row" data-name="烤翅" data-spec="1" data-price="26">
-  <td><input type="checkbox" class="item-check"></td>
-  <td>烤翅</td>
-  <td>1</td>
-  <td>26</td>
-  <td><input type="number" class="qty" value="1" min="1"></td>
-  <td class="row-total">0.00</td>
-</tr>
-<tr class="extra-row">
-  <td colspan="6">
-    表格信息：名称：烤翅　规格：1　单价：26 元　合计（表格）：—
-  </td>
-</tr>
-
-<!-- 烤翅 三斤的 -->
-<tr class="item-row" data-name="烤翅" data-spec="三斤的" data-price="60">
-  <td><input type="checkbox" class="item-check"></td>
-  <td>烤翅</td>
-  <td>三斤的</td>
-  <td>60</td>
-  <td><input type="number" class="qty" value="1" min="1"></td>
-  <td class="row-total">0.00</td>
-</tr>
-<tr class="extra-row">
-  <td colspan="6">
-    表格信息：名称：烤翅　规格：三斤的　单价：60 元　合计（表格）：—
-  </td>
-</tr>
-
-<!-- 培根 -->
-<tr class="item-row" data-name="培根" data-spec="—" data-price="15">
-  <td><input type="checkbox" class="item-check"></td>
-  <td>培根</td>
-  <td>—</td>
-  <td>15</td>
-  <td><input type="number" class="qty" value="1" min="1"></td>
-  <td class="row-total">0.00</td>
-</tr>
-<tr class="extra-row">
-  <td colspan="6">
-    表格信息：名称：培根　规格：—　单价：15 元　合计（表格）：—
-  </td>
-</tr>
-
-<!-- 嫩牛肉 -->
-<tr class="item-row" data-name="嫩牛肉" data-spec="—" data-price="15">
-  <td><input type="checkbox" class="item-check"></td>
-  <td>嫩牛肉</td>
-  <td>—</td>
-  <td>15</td>
-  <td><input type="number" class="qty" value="1" min="1"></td>
-  <td class="row-total">0.00</td>
-</tr>
-<tr class="extra-row">
-  <td colspan="6">
-    表格信息：名称：嫩牛肉　规格：—　单价：15 元　合计（表格）：—
-  </td>
-</tr>
-
-<!-- 麻辣牛肉 -->
-<tr class="item-row" data-name="麻辣牛肉" data-spec="—" data-price="15">
-  <td><input type="checkbox" class="item-check"></td>
-  <td>麻辣牛肉</td>
-  <td>—</td>
-  <td>15</td>
-  <td><input type="number" class="qty" value="1" min="1"></td>
-  <td class="row-total">0.00</td>
-</tr>
-<tr class="extra-row">
-  <td colspan="6">
-    表格信息：名称：麻辣牛肉　规格：—　单价：15 元　合计（表格）：—
-  </td>
-</tr>
-
-<!-- 双椒牛肉 -->
-<tr class="item-row" data-name="双椒牛肉" data-spec="—" data-price="15">
-  <td><input type="checkbox" class="item-check"></td>
-  <td>双椒牛肉</td>
-  <td>—</td>
-  <td>15</td>
-  <td><input type="number" class="qty" value="1" min="1"></td>
-  <td class="row-total">0.00</td>
-</tr>
-<tr class="extra-row">
-  <td colspan="6">
-    表格信息：名称：双椒牛肉　规格：—　单价：15 元　合计（表格）：—
-  </td>
-</tr>
-
-<!-- 小郡肝 -->
-<tr class="item-row" data-name="小郡肝" data-spec="—" data-price="15">
-  <td><input type="checkbox" class="item-check"></td>
-  <td>小郡肝</td>
-  <td>—</td>
-  <td>15</td>
-  <td><input type="number" class="qty" value="1" min="1"></td>
-  <td class="row-total">0.00</td>
-</tr>
-<tr class="extra-row">
-  <td colspan="6">
-    表格信息：名称：小郡肝　规格：—　单价：15 元　合计（表格）：—
-  </td>
-</tr>
-
-<!-- 贡菜 -->
-<tr class="item-row" data-name="贡菜" data-spec="—" data-price="12">
-  <td><input type="checkbox" class="item-check"></td>
-  <td>贡菜</td>
-  <td>—</td>
-  <td>12</td>
-  <td><input type="number" class="qty" value="1" min="1"></td>
-  <td class="row-total">0.00</td>
-</tr>
-<tr class="extra-row">
-  <td colspan="6">
-    表格信息：名称：贡菜　规格：—　单价：12 元　合计（表格）：—
-  </td>
-</tr>
-
-<!-- 小油条 -->
-<tr class="item-row" data-name="小油条" data-spec="—" data-price="13">
-  <td><input type="checkbox" class="item-check"></td>
-  <td>小油条</td>
-  <td>—</td>
-  <td>13</td>
-  <td><input type="number" class="qty" value="1" min="1"></td>
-  <td class="row-total">0.00</td>
-</tr>
-<tr class="extra-row">
-  <td colspan="6">
-    表格信息：名称：小油条　规格：—　单价：13 元　合计（表格）：—
-  </td>
-</tr>
-
-<!-- 爆浆糍粑 -->
-<tr class="item-row" data-name="爆浆糍粑" data-spec="—" data-price="8">
-  <td><input type="checkbox" class="item-check"></td>
-  <td>爆浆糍粑</td>
-  <td>—</td>
-  <td>8</td>
-  <td><input type="number" class="qty" value="1" min="1"></td>
-  <td class="row-total">0.00</td>
-</tr>
-<tr class="extra-row">
-  <td colspan="6">
-    表格信息：名称：爆浆糍粑　规格：—　单价：8 元　合计（表格）：—
-  </td>
-</tr>
-
-<!-- 汤圆 -->
-<tr class="item-row" data-name="汤圆" data-spec="—" data-price="6">
-  <td><input type="checkbox" class="item-check"></td>
-  <td>汤圆</td>
-  <td>—</td>
-  <td>6</td>
-  <td><input type="number" class="qty" value="1" min="1"></td>
-  <td class="row-total">0.00</td>
-</tr>
-<tr class="extra-row">
-  <td colspan="6">
-    表格信息：名称：汤圆　规格：—　单价：6 元　合计（表格）：—
-  </td>
-</tr>
-
-<!-- 水饺 -->
-<tr class="item-row" data-name="水饺" data-spec="肉/素1" data-price="10">
-  <td><input type="checkbox" class="item-check"></td>
-  <td>水饺</td>
-  <td>肉/素1</td>
-  <td>10</td>
-  <td><input type="number" class="qty" value="1" min="1"></td>
-  <td class="row-total">0.00</td>
-</tr>
-<tr class="extra-row">
-  <td colspan="6">
-    表格信息：名称：水饺　规格：肉/素1　单价：10 元　合计（表格）：—
-  </td>
-</tr>
-
-<!-- 手抓饼10 -->
-<tr class="item-row" data-name="手抓饼10" data-spec="葱香/原味" data-price="10">
-  <td><input type="checkbox" class="item-check"></td>
-  <td>手抓饼10</td>
-  <td>葱香/原味</td>
-  <td>10</td>
-  <td><input type="number" class="qty" value="1" min="1"></td>
-  <td class="row-total">0.00</td>
-</tr>
-<tr class="extra-row">
-  <td colspan="6">
-    表格信息：名称：手抓饼10　规格：葱香/原味　单价：10 元　合计（表格）：—
-  </td>
-</tr>
-
-<!-- 盐酥鸡 -->
-<tr class="item-row" data-name="盐酥鸡" data-spec="—" data-price="24">
-  <td><input type="checkbox" class="item-check"></td>
-  <td>盐酥鸡</td>
-  <td>—</td>
-  <td>24</td>
-  <td><input type="number" class="qty" value="1" min="1"></td>
-  <td class="row-total">0.00</td>
-</tr>
-<tr class="extra-row">
-  <td colspan="6">
-    表格信息：名称：盐酥鸡　规格：—　单价：24 元　合计（表格）：—
-  </td>
-</tr>
-
-<!-- 南瓜饼 -->
-<tr class="item-row" data-name="南瓜饼" data-spec="—" data-price="9">
-  <td><input type="checkbox" class="item-check"></td>
-  <td>南瓜饼</td>
-  <td>—</td>
-  <td>9</td>
-  <td><input type="number" class="qty" value="1" min="1"></td>
-  <td class="row-total">0.00</td>
-</tr>
-<tr class="extra-row">
-  <td colspan="6">
-    表格信息：名称：南瓜饼　规格：—　单价：9 元　合计（表格）：—
-  </td>
-</tr>
-
-<!-- 包浆豆腐 -->
-<tr class="item-row" data-name="包浆豆腐" data-spec="—" data-price="10">
-  <td><input type="checkbox" class="item-check"></td>
-  <td>包浆豆腐</td>
-  <td>—</td>
-  <td>10</td>
-  <td><input type="number" class="qty" value="1" min="1"></td>
-  <td class="row-total">0.00</td>
-</tr>
-<tr class="extra-row">
-  <td colspan="6">
-    表格信息：名称：包浆豆腐　规格：—　单价：10 元　合计（表格）：—
-  </td>
-</tr>
-
-<!-- 麻花 -->
-<tr class="item-row" data-name="麻花" data-spec="—" data-price="4">
-  <td><input type="checkbox" class="item-check"></td>
-  <td>麻花</td>
-  <td>—</td>
-  <td>4</td>
-  <td><input type="number" class="qty" value="1" min="1"></td>
-  <td class="row-total">0.00</td>
-</tr>
-<tr class="extra-row">
-  <td colspan="6">
-    表格信息：名称：麻花　规格：—　单价：4 元　合计（表格）：—
-  </td>
-</tr>
-
-<!-- 豆皮 -->
-<tr class="item-row" data-name="豆皮" data-spec="—" data-price="5">
-  <td><input type="checkbox" class="item-check"></td>
-  <td>豆皮</td>
-  <td>—</td>
-  <td>5</td>
-  <td><input type="number" class="qty" value="1" min="1"></td>
-  <td class="row-total">0.00</td>
-</tr>
-<tr class="extra-row">
-  <td colspan="6">
-    表格信息：名称：豆皮　规格：—　单价：5 元　合计（表格）：—
-  </td>
-</tr>
-
-<!-- 小腊肠 -->
-<tr class="item-row" data-name="小腊肠" data-spec="—" data-price="9">
-  <td><input type="checkbox" class="item-check"></td>
-  <td>小腊肠</td>
-  <td>—</td>
-  <td>9</td>
-  <td><input type="number" class="qty" value="1" min="1"></td>
-  <td class="row-total">0.00</td>
-</tr>
-<tr class="extra-row">
-  <td colspan="6">
-    表格信息：名称：小腊肠　规格：—　单价：9 元　合计（表格）：—
-  </td>
-</tr>
-
-<!-- 笋尖 -->
-<tr class="item-row" data-name="笋尖" data-spec="—" data-price="8">
-  <td><input type="checkbox" class="item-check"></td>
-  <td>笋尖</td>
-  <td>—</td>
-  <td>8</td>
-  <td><input type="number" class="qty" value="1" min="1"></td>
-  <td class="row-total">0.00</td>
-</tr>
-<tr class="extra-row">
-  <td colspan="6">
-    表格信息：名称：笋尖　规格：—　单价：8 元　合计（表格）：—
-  </td>
-</tr>
-
-<!-- 粉丝 -->
-<tr class="item-row" data-name="粉丝" data-spec="—" data-price="5">
-  <td><input type="checkbox" class="item-check"></td>
-  <td>粉丝</td>
-  <td>—</td>
-  <td>5</td>
-  <td><input type="number" class="qty" value="1" min="1"></td>
-  <td class="row-total">0.00</td>
-</tr>
-<tr class="extra-row">
-  <td colspan="6">
-    表格信息：名称：粉丝　规格：—　单价：5 元　合计（表格）：—
-  </td>
-</tr>
-
-<!-- 宽粉 -->
-<tr class="item-row" data-name="宽粉" data-spec="—" data-price="5">
-  <td><input type="checkbox" class="item-check"></td>
-  <td>宽粉</td>
-  <td>—</td>
-  <td>5</td>
-  <td><input type="number" class="qty" value="1" min="1"></td>
-  <td class="row-total">0.00</td>
-</tr>
-<tr class="extra-row">
-  <td colspan="6">
-    表格信息：名称：宽粉　规格：—　单价：5 元　合计（表格）：—
-  </td>
-</tr>
-
-<!-- 土豆粉 -->
-<tr class="item-row" data-name="土豆粉" data-spec="—" data-price="5">
-  <td><input type="checkbox" class="item-check"></td>
-  <td>土豆粉</td>
-  <td>—</td>
-  <td>5</td>
-  <td><input type="number" class="qty" value="1" min="1"></td>
-  <td class="row-total">0.00</td>
-</tr>
-<tr class="extra-row">
-  <td colspan="6">
-    表格信息：名称：土豆粉　规格：—　单价：5 元　合计（表格）：—
-  </td>
-</tr>
-
-<!-- 川粉 -->
-<tr class="item-row" data-name="川粉" data-spec="—" data-price="5">
-  <td><input type="checkbox" class="item-check"></td>
-  <td>川粉</td>
-  <td>—</td>
-  <td>5</td>
-  <td><input type="number" class="qty" value="1" min="1"></td>
-  <td class="row-total">0.00</td>
-</tr>
-<tr class="extra-row">
-  <td colspan="6">
-    表格信息：名称：川粉　规格：—　单价：5 元　合计（表格）：—
-  </td>
-</tr>
-
-<!-- 水晶粉 -->
-<tr class="item-row" data-name="水晶粉" data-spec="—" data-price="3">
-  <td><input type="checkbox" class="item-check"></td>
-  <td>水晶粉</td>
-  <td>—</td>
-  <td>3</td>
-  <td><input type="number" class="qty" value="1" min="1"></td>
-  <td class="row-total">0.00</td>
-</tr>
-<tr class="extra-row">
-  <td colspan="6">
-    表格信息：名称：水晶粉　规格：—　单价：3 元　合计（表格）：—
-  </td>
-</tr>
-
-<!-- 鸡蛋干 -->
-<tr class="item-row" data-name="鸡蛋干" data-spec="—" data-price="4">
-  <td><input type="checkbox" class="item-check"></td>
-  <td>鸡蛋干</td>
-  <td>—</td>
-  <td>4</td>
-  <td><input type="number" class="qty" value="1" min="1"></td>
-  <td class="row-total">0.00</td>
-</tr>
-<tr class="extra-row">
-  <td colspan="6">
-    表格信息：名称：鸡蛋干　规格：—　单价：4 元　合计（表格）：—
-  </td>
-</tr>
-
-<!-- 年糕 -->
-<tr class="item-row" data-name="年糕" data-spec="—" data-price="5">
-  <td><input type="checkbox" class="item-check"></td>
-  <td>年糕</td>
-  <td>—</td>
-  <td>5</td>
-  <td><input type="number" class="qty" value="1" min="1"></td>
-  <td class="row-total">0.00</td>
-</tr>
-<tr class="extra-row">
-  <td colspan="6">
-    表格信息：名称：年糕　规格：—　单价：5 元　合计（表格）：—
-  </td>
-</tr>
-
-<!-- 梅林午餐肉 -->
-<tr class="item-row" data-name="梅林午餐肉" data-spec="—" data-price="13">
-  <td><input type="checkbox" class="item-check"></td>
-  <td>梅林午餐肉</td>
-  <td>—</td>
-  <td>13</td>
-  <td><input type="number" class="qty" value="1" min="1"></td>
-  <td class="row-total">0.00</td>
-</tr>
-<tr class="extra-row">
-  <td colspan="6">
-    表格信息：名称：梅林午餐肉　规格：—　单价：13 元　合计（表格）：—
-  </td>
-</tr>
-
-<!-- 双汇午餐肉 -->
-<tr class="item-row" data-name="双汇午餐肉" data-spec="—" data-price="12">
-  <td><input type="checkbox" class="item-check"></td>
-  <td>双汇午餐肉</td>
-  <td>—</td>
-  <td>12</td>
-  <td><input type="number" class="qty" value="1" min="1"></td>
-  <td class="row-total">0.00</td>
-</tr>
-<tr class="extra-row">
-  <td colspan="6">
-    表格信息：名称：双汇午餐肉　规格：—　单价：12 元　合计（表格）：—
-  </td>
-</tr>
-
-<!-- 响铃卷 -->
-<tr class="item-row" data-name="响铃卷" data-spec="—" data-price="8">
-  <td><input type="checkbox" class="item-check"></td>
-  <td>响铃卷</td>
-  <td>—</td>
-  <td>8</td>
-  <td><input type="number" class="qty" value="1" min="1"></td>
-  <td class="row-total">0.00</td>
-</tr>
-<tr class="extra-row">
-  <td colspan="6">
-    表格信息：名称：响铃卷　规格：—　单价：8 元　合计（表格）：—
-  </td>
-</tr>
-
-<!-- 砂锅面 -->
-<tr class="item-row" data-name="砂锅面" data-spec="—" data-price="1">
-  <td><input type="checkbox" class="item-check"></td>
-  <td>砂锅面</td>
-  <td>—</td>
-  <td>1</td>
-  <td><input type="number" class="qty" value="1" min="1"></td>
-  <td class="row-total">0.00</td>
-</tr>
-<tr class="extra-row">
-  <td colspan="6">
-    表格信息：名称：砂锅面　规格：—　单价：1 元　合计（表格）：—
-  </td>
-</tr>
-
-<!-- 海底捞蘸料 -->
-<tr class="item-row" data-name="海底捞蘸料" data-spec="香辣/原味" data-price="5">
-  <td><input type="checkbox" class="item-check"></td>
-  <td>海底捞蘸料</td>
-  <td>香辣/原味</td>
-  <td>5</td>
-  <td><input type="number" class="qty" value="1" min="1"></td>
-  <td class="row-total">0.00</td>
-</tr>
-<tr class="extra-row">
-  <td colspan="6">
-    表格信息：名称：海底捞蘸料　规格：香辣/原味　单价：5 元　合计（表格）：—
-  </td>
-</tr>
-
-<!-- 纯芝麻酱 -->
-<tr class="item-row" data-name="纯芝麻酱" data-spec="—" data-price="10">
-  <td><input type="checkbox" class="item-check"></td>
-  <td>纯芝麻酱</td>
-  <td>—</td>
-  <td>10</td>
-  <td><input type="number" class="qty" value="1" min="1"></td>
-  <td class="row-total">0.00</td>
-</tr>
-<tr class="extra-row">
-  <td colspan="6">
-    表格信息：名称：纯芝麻酱　规格：—　单价：10 元　合计（表格）：—
-  </td>
-</tr>
-
-<!-- 复合型芝麻酱 -->
-<tr class="item-row" data-name="复合型芝麻酱" data-spec="—" data-price="8">
-  <td><input type="checkbox" class="item-check"></td>
-  <td>复合型芝麻酱</td>
-  <td>—</td>
-  <td>8</td>
-  <td><input type="number" class="qty" value="1" min="1"></td>
-  <td class="row-total">0.00</td>
-</tr>
-<tr class="extra-row">
-  <td colspan="6">
-    表格信息：名称：复合型芝麻酱　规格：—　单价：8 元　合计（表格）：—
-  </td>
-</tr>
-
-<!-- 二八酱 -->
-<tr class="item-row" data-name="二八酱" data-spec="—" data-price="14">
-  <td><input type="checkbox" class="item-check"></td>
-  <td>二八酱</td>
-  <td>—</td>
-  <td>14</td>
-  <td><input type="number" class="qty" value="1" min="1"></td>
-  <td class="row-total">0.00</td>
-</tr>
-<tr class="extra-row">
-  <td colspan="6">
-    表格信息：名称：二八酱　规格：—　单价：14 元　合计（表格）：—
-  </td>
-</tr>
-
-<!-- 香油 -->
-<tr class="item-row" data-name="香油" data-spec="—" data-price="4">
-  <td><input type="checkbox" class="item-check"></td>
-  <td>香油</td>
-  <td>—</td>
-  <td>4</td>
-  <td><input type="number" class="qty" value="1" min="1"></td>
-  <td class="row-total">0.00</td>
-</tr>
-<tr class="extra-row">
-  <td colspan="6">
-    表格信息：名称：香油　规格：—　单价：4 元　合计（表格）：—
-  </td>
-</tr>
-
-<!-- 麻油 -->
-<tr class="item-row" data-name="麻油" data-spec="—" data-price="4">
-  <td><input type="checkbox" class="item-check"></td>
-  <td>麻油</td>
-  <td>—</td>
-  <td>4</td>
-  <td><input type="number" class="qty" value="1" min="1"></td>
-  <td class="row-total">0.00</td>
-</tr>
-<tr class="extra-row">
-  <td colspan="6">
-    表格信息：名称：麻油　规格：—　单价：4 元　合计（表格）：—
-  </td>
-</tr>
-
-<!-- 海带苗 -->
-<tr class="item-row" data-name="海带苗" data-spec="—" data-price="5">
-  <td><input type="checkbox" class="item-check"></td>
-  <td>海带苗</td>
-  <td>—</td>
-  <td>5</td>
-  <td><input type="number" class="qty" value="1" min="1"></td>
-  <td class="row-total">0.00</td>
-</tr>
-<tr class="extra-row">
-  <td colspan="6">
-    表格信息：名称：海带苗　规格：—　单价：5 元　合计（表格）：—
-  </td>
-</tr>
-
-<!-- 鞭炮笋 -->
-<tr class="item-row" data-name="鞭炮笋" data-spec="—" data-price="5">
-  <td><input type="checkbox" class="item-check"></td>
-  <td>鞭炮笋</td>
-  <td>—</td>
-  <td>5</td>
-  <td><input type="number" class="qty" value="1" min="1"></td>
-  <td class="row-total">0.00</td>
-</tr>
-<tr class="extra-row">
-  <td colspan="6">
-    表格信息：名称：鞭炮笋　规格：—　单价：5 元　合计（表格）：—
-  </td>
-</tr>
-
-<!-- 海底捞 清油/三鲜 -->
-<tr class="item-row" data-name="海底捞" data-spec="清油/三鲜" data-price="12">
-  <td><input type="checkbox" class="item-check"></td>
-  <td>海底捞</td>
-  <td>清油/三鲜</td>
-  <td>12</td>
-  <td><input type="number" class="qty" value="1" min="1"></td>
-  <td class="row-total">0.00</td>
-</tr>
-<tr class="extra-row">
-  <td colspan="6">
-    表格信息：名称：海底捞　规格：清油/三鲜　单价：12 元　合计（表格）：—
-  </td>
-</tr>
-
-<!-- 海底捞 菌汤/番茄 -->
-<tr class="item-row" data-name="海底捞" data-spec="菌汤/番茄" data-price="12">
-  <td><input type="checkbox" class="item-check"></td>
-  <td>海底捞</td>
-  <td>菌汤/番茄</td>
-  <td>12</td>
-  <td><input type="number" class="qty" value="1" min="1"></td>
-  <td class="row-total">0.00</td>
-</tr>
-<tr class="extra-row">
-  <td colspan="6">
-    表格信息：名称：海底捞　规格：菌汤/番茄　单价：12 元　合计（表格）：—
-  </td>
-</tr>
-
-<!-- 海底捞牛油 500克 -->
-<tr class="item-row" data-name="海底捞牛油" data-spec="500克" data-price="20">
-  <td><input type="checkbox" class="item-check"></td>
-  <td>海底捞牛油</td>
-  <td>500克</td>
-  <td>20</td>
-  <td><input type="number" class="qty" value="1" min="1"></td>
-  <td class="row-total">0.00</td>
-</tr>
-<tr class="extra-row">
-  <td colspan="6">
-    表格信息：名称：海底捞牛油　规格：500克　单价：20 元　合计（表格）：—
-  </td>
-</tr>
-
-<!-- 海底捞牛油 360/四小块 -->
-<tr class="item-row" data-name="海底捞牛油" data-spec="360/四小块" data-price="18">
-  <td><input type="checkbox" class="item-check"></td>
-  <td>海底捞牛油</td>
-  <td>360/四小块</td>
-  <td>18</td>
-  <td><input type="number" class="qty" value="1" min="1"></td>
-  <td class="row-total">0.00</td>
-</tr>
-<tr class="extra-row">
-  <td colspan="6">
-    表格信息：名称：海底捞牛油　规格：360/四小块　单价：18 元　合计（表格）：—
-  </td>
-</tr>
-
-<!-- 好人家牛油 500克 -->
-<tr class="item-row" data-name="好人家牛油" data-spec="500克" data-price="25">
-  <td><input type="checkbox" class="item-check"></td>
-  <td>好人家牛油</td>
-  <td>500克</td>
-  <td>25</td>
-  <td><input type="number" class="qty" value="1" min="1"></td>
-  <td class="row-total">0.00</td>
-</tr>
-<tr class="extra-row">
-  <td colspan="6">
-    表格信息：名称：好人家牛油　规格：500克　单价：25 元　合计（表格）：—
-  </td>
-</tr>
-
-<!-- 好人家牛油 四小块 -->
-<tr class="item-row" data-name="好人家牛油" data-spec="四小块" data-price="22">
-  <td><input type="checkbox" class="item-check"></td>
-  <td>好人家牛油</td>
-  <td>四小块</td>
-  <td>22</td>
-  <td><input type="number" class="qty" value="1" min="1"></td>
-  <td class="row-total">0.00</td>
-</tr>
-<tr class="extra-row">
-  <td colspan="6">
-    表格信息：名称：好人家牛油　规格：四小块　单价：22 元　合计（表格）：—
-  </td>
-</tr>
-
-<!-- 好人家厚牛油 500克 -->
-<tr class="item-row" data-name="好人家厚牛油" data-spec="500克" data-price="30">
-  <td><input type="checkbox" class="item-check"></td>
-  <td>好人家厚牛油</td>
-  <td>500克</td>
-  <td>30</td>
-  <td><input type="number" class="qty" value="1" min="1"></td>
-  <td class="row-total">0.00</td>
-</tr>
-<tr class="extra-row">
-  <td colspan="6">
-    表格信息：名称：好人家厚牛油　规格：500克　单价：30 元　合计（表格）：—
-  </td>
-</tr>
-
-<!-- 好人家 清油大包 -->
-<tr class="item-row" data-name="好人家" data-spec="清油大包" data-price="27">
-  <td><input type="checkbox" class="item-check"></td>
-  <td>好人家</td>
-  <td>清油大包</td>
-  <td>27</td>
-  <td><input type="number" class="qty" value="1" min="1"></td>
-  <td class="row-total">0.00</td>
-</tr>
-<tr class="extra-row">
-  <td colspan="6">
-    表格信息：名称：好人家　规格：清油大包　单价：27 元　合计（表格）：—
-  </td>
-</tr>
-
-<!-- 好人家 清油小包 -->
-<tr class="item-row" data-name="好人家" data-spec="清油小包" data-price="15">
-  <td><input type="checkbox" class="item-check"></td>
-  <td>好人家</td>
-  <td>清油小包</td>
-  <td>15</td>
-  <td><input type="number" class="qty" value="1" min="1"></td>
-  <td class="row-total">0.00</td>
-</tr>
-<tr class="extra-row">
-  <td colspan="6">
-    表格信息：名称：好人家　规格：清油小包　单价：15 元　合计（表格）：—
-  </td>
-</tr>
-
-<!-- 好人家 三鲜 -->
-<tr class="item-row" data-name="好人家" data-spec="三鲜" data-price="12">
-  <td><input type="checkbox" class="item-check"></td>
-  <td>好人家</td>
-  <td>三鲜</td>
-  <td>12</td>
-  <td><input type="number" class="qty" value="1" min="1"></td>
-  <td class="row-total">0.00</td>
-</tr>
-<tr class="extra-row">
-  <td colspan="6">
-    表格信息：名称：好人家　规格：三鲜　单价：12 元　合计（表格）：—
-  </td>
-</tr>
-
-<!-- 好人家 牛油清汤 -->
-<tr class="item-row" data-name="好人家" data-spec="牛油清汤" data-price="13">
-  <td><input type="checkbox" class="item-check"></td>
-  <td>好人家</td>
-  <td>牛油清汤</td>
-  <td>13</td>
-  <td><input type="number" class="qty" value="1" min="1"></td>
-  <td class="row-total">0.00</td>
-</tr>
-<tr class="extra-row">
-  <td colspan="6">
-    表格信息：名称：好人家　规格：牛油清汤　单价：13 元　合计（表格）：—
-  </td>
-</tr>
-
-<!-- 名扬 500克牛油 -->
- 
-<tr class="item-row" data-name="名扬" data-spec="500克牛油" data-price="28">
-  <td><input type="checkbox" class="item-check"></td>
-  <td>名扬</td>
-  <td>500克牛油</td>
-  <td>28</td>
-  <td><input type="number" class="qty" value="1" min="1"></td>
-  <td class="row-total">0.00</td>
-</tr>
-<tr class="extra-row">
-  <td colspan="6">
-    表格信息：名称：名扬　规格：500克牛油　单价：28 元　合计（表格）：—
-  </td>
-</tr>
-
-<!-- 名扬 四小块牛油 -->
-<tr class="item-row" data-name="名扬" data-spec="四小块牛油" data-price="28">
-  <td><input type="checkbox" class="item-check"></td>
-  <td>名扬</td>
-  <td>四小块牛油</td>
-  <td>28</td>
-  <td><input type="number" class="qty" value="1" min="1"></td>
-  <td class="row-total">0.00</td>
-</tr>
-<tr class="extra-row">
-  <td colspan="6">
-    表格信息：名称：名扬　规格：四小块牛油　单价：28 元　合计（表格）：—
-  </td>
-</tr>
-
-<!-- 名扬 清油 -->
-<tr class="item-row" data-name="名扬" data-spec="清油" data-price="18">
-  <td><input type="checkbox" class="item-check"></td>
-  <td>名扬</td>
-  <td>清油</td>
-  <td>18</td>
-  <td><input type="number" class="qty" value="1" min="1"></td>
-  <td class="row-total">0.00</td>
-</tr>
-<tr class="extra-row">
-  <td colspan="6">
-    表格信息：名称：名扬　规格：清油　单价：18 元　合计（表格）：—
-  </td>
-</tr>
-
-<!-- 德庄 牛油500 -->
-<tr class="item-row" data-name="德庄" data-spec="牛油500" data-price="28">
-  <td><input type="checkbox" class="item-check"></td>
-  <td>德庄</td>
-  <td>牛油500</td>
-  <td>28</td>
-  <td><input type="number" class="qty" value="1" min="1"></td>
-  <td class="row-total">0.00</td>
-</tr>
-<tr class="extra-row">
-  <td colspan="6">
-    表格信息：名称：德庄　规格：牛油500　单价：28 元　合计（表格）：—
-  </td>
-</tr>
-
-<!-- 德庄 四小块 -->
-<tr class="item-row" data-name="德庄" data-spec="四小块" data-price="23">
-  <td><input type="checkbox" class="item-check"></td>
-  <td>德庄</td>
-  <td>四小块</td>
-  <td>23</td>
-  <td><input type="number" class="qty" value="1" min="1"></td>
-  <td class="row-total">0.00</td>
-</tr>
-<tr class="extra-row">
-  <td colspan="6">
-    表格信息：名称：德庄　规格：四小块　单价：23 元　合计（表格）：—
-  </td>
-</tr>
-
-<!-- 德庄 三鲜 -->
-<tr class="item-row" data-name="德庄" data-spec="三鲜" data-price="10">
-  <td><input type="checkbox" class="item-check"></td>
-  <td>德庄</td>
-  <td>三鲜</td>
-  <td>10</td>
-  <td><input type="number" class="qty" value="1" min="1"></td>
-  <td class="row-total">0.00</td>
-</tr>
-<tr class="extra-row">
-  <td colspan="6">
-    表格信息：名称：德庄　规格：三鲜　单价：10 元　合计（表格）：—
-  </td>
-</tr>
-
-<!-- 红99 -->
-<tr class="item-row" data-name="红99" data-spec="—" data-price="12">
-  <td><input type="checkbox" class="item-check"></td>
-  <td>红99</td>
-  <td>—</td>
-  <td>12</td>
-  <td><input type="number" class="qty" value="1" min="1"></td>
-  <td class="row-total">0.00</td>
-</tr>
-<tr class="extra-row">
-  <td colspan="6">
-    表格信息：名称：红99　规格：—　单价：12 元　合计（表格）：—
-  </td>
-</tr>
-
-<!-- 小肥羊 -->
-<tr class="item-row" data-name="小肥羊" data-spec="—" data-price="12">
-  <td><input type="checkbox" class="item-check"></td>
-  <td>小肥羊</td>
-  <td>—</td>
-  <td>12</td>
-  <td><input type="number" class="qty" value="1" min="1"></td>
-  <td class="row-total">0.00</td>
-</tr>
-<tr class="extra-row">
-  <td colspan="6">
-    表格信息：名称：小肥羊　规格：—　单价：12 元　合计（表格）：—
-  </td>
-</tr>
+          <tr class="item-row" data-name="金钻小肥羊肉卷" data-spec="1" data-price="32">
+            <td><input type="checkbox" class="item-check"></td>
+            <td>金钻小肥羊肉卷</td>
+            <td>1</td>
+            <td>32</td>
+            <td><input type="number" class="qty qty-input" value="1" min="1"></td>
+            <td class="row-total">0.00</td>
+          </tr>
+          <tr class="extra-row">
+            <td colspan="6">
+              表格信息：品类名称：金钻小肥羊肉卷　净重量/规格：1　价格：32 元　备注：无
+            </td>
+          </tr>
+
+          <!-- 雪花肥牛肉卷 -->
+          <tr class="item-row" data-name="雪花肥牛肉卷" data-spec="1" data-price="32">
+            <td><input type="checkbox" class="item-check"></td>
+            <td>雪花肥牛肉卷</td>
+            <td>1</td>
+            <td>32</td>
+            <td><input type="number" class="qty qty-input" value="1" min="1"></td>
+            <td class="row-total">0.00</td>
+          </tr>
+          <tr class="extra-row">
+            <td colspan="6">
+              表格信息：品类名称：雪花肥牛肉卷　净重量/规格：1　价格：32 元　备注：无
+            </td>
+          </tr>
+
+          <!-- 牛板腱肉卷 -->
+          <tr class="item-row" data-name="牛板腱肉卷" data-spec="1" data-price="39">
+            <td><input type="checkbox" class="item-check"></td>
+            <td>牛板腱肉卷</td>
+            <td>1</td>
+            <td>39</td>
+            <td><input type="number" class="qty qty-input" value="1" min="1"></td>
+            <td class="row-total">0.00</td>
+          </tr>
+          <tr class="extra-row">
+            <td colspan="6">
+              表格信息：品类名称：牛板腱肉卷　净重量/规格：1　价格：39 元　备注：无
+            </td>
+          </tr>
+
+          <!-- 高钙羊肉卷 -->
+          <tr class="item-row" data-name="高钙羊肉卷" data-spec="1" data-price="36">
+            <td><input type="checkbox" class="item-check"></td>
+            <td>高钙羊肉卷</td>
+            <td>1</td>
+            <td>36</td>
+            <td><input type="number" class="qty qty-input" value="1" min="1"></td>
+            <td class="row-total">0.00</td>
+          </tr>
+          <tr class="extra-row">
+            <td colspan="6">
+              表格信息：品类名称：高钙羊肉卷　净重量/规格：1　价格：36 元　备注：无
+            </td>
+          </tr>
+
+          <!-- 安井丸子 -->
+          <tr class="item-row" data-name="安井丸子" data-spec="糖果装1" data-price="16">
+            <td><input type="checkbox" class="item-check"></td>
+            <td>安井丸子</td>
+            <td>糖果装1</td>
+            <td>16</td>
+            <td><input type="number" class="qty qty-input" value="1" min="1"></td>
+            <td class="row-total">0.00</td>
+          </tr>
+          <tr class="extra-row">
+            <td colspan="6">
+              表格信息：品类名称：安井丸子　净重量/规格：糖果装1　价格：16 元　备注：无
+            </td>
+          </tr>
+
+          <!-- 安井丸子（散称） -->
+          <tr class="item-row" data-name="安井丸子（散称）" data-spec="1" data-price="12">
+            <td><input type="checkbox" class="item-check"></td>
+            <td>安井丸子（散称）</td>
+            <td>1</td>
+            <td>12</td>
+            <td><input type="number" class="qty qty-input" value="1" min="1"></td>
+            <td class="row-total">0.00</td>
+          </tr>
+          <tr class="extra-row">
+            <td colspan="6">
+              表格信息：品类名称：安井丸子（散称）　净重量/规格：1　价格：12 元　备注：无
+            </td>
+          </tr>
+
+          <!-- 鱼籽福袋 -->
+          <tr class="item-row" data-name="鱼籽福袋" data-spec="锁鲜装" data-price="20">
+            <td><input type="checkbox" class="item-check"></td>
+            <td>鱼籽福袋</td>
+            <td>锁鲜装</td>
+            <td>20</td>
+            <td><input type="number" class="qty qty-input" value="1" min="1"></td>
+            <td class="row-total">0.00</td>
+          </tr>
+          <tr class="extra-row">
+            <td colspan="6">
+              表格信息：品类名称：鱼籽福袋　净重量/规格：锁鲜装　价格：20 元　备注：无
+            </td>
+          </tr>
+
+          <!-- 鱼籽包 -->
+          <tr class="item-row" data-name="鱼籽包" data-spec="锁鲜装" data-price="15">
+            <td><input type="checkbox" class="item-check"></td>
+            <td>鱼籽包</td>
+            <td>锁鲜装</td>
+            <td>15</td>
+            <td><input type="number" class="qty qty-input" value="1" min="1"></td>
+            <td class="row-total">0.00</td>
+          </tr>
+          <tr class="extra-row">
+            <td colspan="6">
+              表格信息：品类名称：鱼籽包　净重量/规格：锁鲜装　价格：15 元　备注：无
+            </td>
+          </tr>
+
+          <!-- 撒尿牛丸 -->
+          <tr class="item-row" data-name="撒尿牛丸" data-spec="锁鲜装" data-price="18">
+            <td><input type="checkbox" class="item-check"></td>
+            <td>撒尿牛丸</td>
+            <td>锁鲜装</td>
+            <td>18</td>
+            <td><input type="number" class="qty qty-input" value="1" min="1"></td>
+            <td class="row-total">0.00</td>
+          </tr>
+          <tr class="extra-row">
+            <td colspan="6">
+              表格信息：品类名称：撒尿牛丸　净重量/规格：锁鲜装　价格：18 元　备注：无
+            </td>
+          </tr>
+
+          <!-- 嫩鱼丸 -->
+          <tr class="item-row" data-name="嫩鱼丸" data-spec="锁鲜装" data-price="12">
+            <td><input type="checkbox" class="item-check"></td>
+            <td>嫩鱼丸</td>
+            <td>锁鲜装</td>
+            <td>12</td>
+            <td><input type="number" class="qty qty-input" value="1" min="1"></td>
+            <td class="row-total">0.00</td>
+          </tr>
+          <tr class="extra-row">
+            <td colspan="6">
+              表格信息：品类名称：嫩鱼丸　净重量/规格：锁鲜装　价格：12 元　备注：无
+            </td>
+          </tr>
+
+          <!-- 炸鱼蛋 -->
+          <tr class="item-row" data-name="炸鱼蛋" data-spec="锁鲜装" data-price="14">
+            <td><input type="checkbox" class="item-check"></td>
+            <td>炸鱼蛋</td>
+            <td>锁鲜装</td>
+            <td>14</td>
+            <td><input type="number" class="qty qty-input" value="1" min="1"></td>
+            <td class="row-total">0.00</td>
+          </tr>
+          <tr class="extra-row">
+            <td colspan="6">
+              表格信息：品类名称：炸鱼蛋　净重量/规格：锁鲜装　价格：14 元　备注：无
+            </td>
+          </tr>
+
+          <!-- V型蟹柳 -->
+          <tr class="item-row" data-name="V型蟹柳" data-spec="锁鲜装" data-price="16">
+            <td><input type="checkbox" class="item-check"></td>
+            <td>V型蟹柳</td>
+            <td>锁鲜装</td>
+            <td>16</td>
+            <td><input type="number" class="qty qty-input" value="1" min="1"></td>
+            <td class="row-total">0.00</td>
+          </tr>
+          <tr class="extra-row">
+            <td colspan="6">
+              表格信息：品类名称：V型蟹柳　净重量/规格：锁鲜装　价格：16 元　备注：无
+            </td>
+          </tr>
+
+          <!-- 蟹棒 -->
+          <tr class="item-row" data-name="蟹棒" data-spec="锁鲜装" data-price="15">
+            <td><input type="checkbox" class="item-check"></td>
+            <td>蟹棒</td>
+            <td>锁鲜装</td>
+            <td>15</td>
+            <td><input type="number" class="qty qty-input" value="1" min="1"></td>
+            <td class="row-total">0.00</td>
+          </tr>
+          <tr class="extra-row">
+            <td colspan="6">
+              表格信息：品类名称：蟹棒　净重量/规格：锁鲜装　价格：15 元　备注：无
+            </td>
+          </tr>
+
+          <!-- 龙虾球 -->
+          <tr class="item-row" data-name="龙虾球" data-spec="锁鲜装" data-price="15">
+            <td><input type="checkbox" class="item-check"></td>
+            <td>龙虾球</td>
+            <td>锁鲜装</td>
+            <td>15</td>
+            <td><input type="number" class="qty qty-input" value="1" min="1"></td>
+            <td class="row-total">0.00</td>
+          </tr>
+          <tr class="extra-row">
+            <td colspan="6">
+              表格信息：品类名称：龙虾球　净重量/规格：锁鲜装　价格：15 元　备注：无
+            </td>
+          </tr>
+
+          <!-- 芝士鱼豆腐 -->
+          <tr class="item-row" data-name="芝士鱼豆腐" data-spec="锁鲜装" data-price="16">
+            <td><input type="checkbox" class="item-check"></td>
+            <td>芝士鱼豆腐</td>
+            <td>锁鲜装</td>
+            <td>16</td>
+            <td><input type="number" class="qty qty-input" value="1" min="1"></td>
+            <td class="row-total">0.00</td>
+          </tr>
+          <tr class="extra-row">
+            <td colspan="6">
+              表格信息：品类名称：芝士鱼豆腐　净重量/规格：锁鲜装　价格：16 元　备注：无
+            </td>
+          </tr>
+
+          <!-- 鱼豆腐 -->
+          <tr class="item-row" data-name="鱼豆腐" data-spec="锁鲜装" data-price="14">
+            <td><input type="checkbox" class="item-check"></td>
+            <td>鱼豆腐</td>
+            <td>锁鲜装</td>
+            <td>14</td>
+            <td><input type="number" class="qty qty-input" value="1" min="1"></td>
+            <td class="row-total">0.00</td>
+          </tr>
+          <tr class="extra-row">
+            <td colspan="6">
+              表格信息：品类名称：鱼豆腐　净重量/规格：锁鲜装　价格：14 元　备注：无
+            </td>
+          </tr>
+
+          <!-- 墨鱼丸 -->
+          <tr class="item-row" data-name="墨鱼丸" data-spec="锁鲜装" data-price="13">
+            <td><input type="checkbox" class="item-check"></td>
+            <td>墨鱼丸</td>
+            <td>锁鲜装</td>
+            <td>13</td>
+            <td><input type="number" class="qty qty-input" value="1" min="1"></td>
+            <td class="row-total">0.00</td>
+          </tr>
+          <tr class="extra-row">
+            <td colspan="6">
+              表格信息：品类名称：墨鱼丸　净重量/规格：锁鲜装　价格：13 元　备注：无
+            </td>
+          </tr>
+
+          <!-- 墨汁一口肠 -->
+          <tr class="item-row" data-name="墨汁一口肠" data-spec="锁鲜装" data-price="20">
+            <td><input type="checkbox" class="item-check"></td>
+            <td>墨汁一口肠</td>
+            <td>锁鲜装</td>
+            <td>20</td>
+            <td><input type="number" class="qty qty-input" value="1" min="1"></td>
+            <td class="row-total">0.00</td>
+          </tr>
+          <tr class="extra-row">
+            <td colspan="6">
+              表格信息：品类名称：墨汁一口肠　净重量/规格：锁鲜装　价格：20 元　备注：无
+            </td>
+          </tr>
+
+          <!-- 芝士包 -->
+          <tr class="item-row" data-name="芝士包" data-spec="锁鲜装" data-price="16">
+            <td><input type="checkbox" class="item-check"></td>
+            <td>芝士包</td>
+            <td>锁鲜装</td>
+            <td>16</td>
+            <td><input type="number" class="qty qty-input" value="1" min="1"></td>
+            <td class="row-total">0.00</td>
+          </tr>
+          <tr class="extra-row">
+            <td colspan="6">
+              表格信息：品类名称：芝士包　净重量/规格：锁鲜装　价格：16 元　备注：无
+            </td>
+          </tr>
+
+          <!-- 虾滑球 -->
+          <tr class="item-row" data-name="虾滑球" data-spec="锁鲜装" data-price="18">
+            <td><input type="checkbox" class="item-check"></td>
+            <td>虾滑球</td>
+            <td>锁鲜装</td>
+            <td>18</td>
+            <td><input type="number" class="qty qty-input" value="1" min="1"></td>
+            <td class="row-total">0.00</td>
+          </tr>
+          <tr class="extra-row">
+            <td colspan="6">
+              表格信息：品类名称：虾滑球　净重量/规格：锁鲜装　价格：18 元　备注：无
+            </td>
+          </tr>
+
+          <!-- 潮汕牛肉丸 -->
+          <tr class="item-row" data-name="潮汕牛肉丸" data-spec="锁鲜装" data-price="20">
+            <td><input type="checkbox" class="item-check"></td>
+            <td>潮汕牛肉丸</td>
+            <td>锁鲜装</td>
+            <td>20</td>
+            <td><input type="number" class="qty qty-input" value="1" min="1"></td>
+            <td class="row-total">0.00</td>
+          </tr>
+          <tr class="extra-row">
+            <td colspan="6">
+              表格信息：品类名称：潮汕牛肉丸　净重量/规格：锁鲜装　价格：20 元　备注：无
+            </td>
+          </tr>
+
+          <!-- 芝士肉肠 -->
+          <tr class="item-row" data-name="芝士肉肠" data-spec="锁鲜装" data-price="16">
+            <td><input type="checkbox" class="item-check"></td>
+            <td>芝士肉肠</td>
+            <td>锁鲜装</td>
+            <td>16</td>
+            <td><input type="number" class="qty qty-input" value="1" min="1"></td>
+            <td class="row-total">0.00</td>
+          </tr>
+          <tr class="extra-row">
+            <td colspan="6">
+              表格信息：品类名称：芝士肉肠　净重量/规格：锁鲜装　价格：16 元　备注：无
+            </td>
+          </tr>
+
+          <!-- 黑松露肉肠 -->
+          <tr class="item-row" data-name="黑松露肉肠" data-spec="锁鲜装" data-price="20">
+            <td><input type="checkbox" class="item-check"></td>
+            <td>黑松露肉肠</td>
+            <td>锁鲜装</td>
+            <td>20</td>
+            <td><input type="number" class="qty qty-input" value="1" min="1"></td>
+            <td class="row-total">0.00</td>
+          </tr>
+          <tr class="extra-row">
+            <td colspan="6">
+              表格信息：品类名称：黑松露肉肠　净重量/规格：锁鲜装　价格：20 元　备注：无
+            </td>
+          </tr>
+
+          <!-- 火山石烤肠 黑椒 -->
+          <tr class="item-row" data-name="火山石烤肠" data-spec="黑椒" data-price="20">
+            <td><input type="checkbox" class="item-check"></td>
+            <td>火山石烤肠</td>
+            <td>黑椒</td>
+            <td>20</td>
+            <td><input type="number" class="qty qty-input" value="1" min="1"></td>
+            <td class="row-total">0.00</td>
+          </tr>
+          <tr class="extra-row">
+            <td colspan="6">
+              表格信息：品类名称：火山石烤肠　净重量/规格：黑椒　价格：20 元　备注：无
+            </td>
+          </tr>
+
+          <!-- 火山石烤肠 原味 -->
+          <tr class="item-row" data-name="火山石烤肠" data-spec="原味" data-price="20">
+            <td><input type="checkbox" class="item-check"></td>
+            <td>火山石烤肠</td>
+            <td>原味</td>
+            <td>20</td>
+            <td><input type="number" class="qty qty-input" value="1" min="1"></td>
+            <td class="row-total">0.00</td>
+          </tr>
+          <tr class="extra-row">
+            <td colspan="6">
+              表格信息：品类名称：火山石烤肠　净重量/规格：原味　价格：20 元　备注：无
+            </td>
+          </tr>
+
+          <!-- 虾滑 -->
+          <tr class="item-row" data-name="虾滑" data-spec="1" data-price="15">
+            <td><input type="checkbox" class="item-check"></td>
+            <td>虾滑</td>
+            <td>1</td>
+            <td>15</td>
+            <td><input type="number" class="qty qty-input" value="1" min="1"></td>
+            <td class="row-total">0.00</td>
+          </tr>
+          <tr class="extra-row">
+            <td colspan="6">
+              表格信息：品类名称：虾滑　净重量/规格：1　价格：15 元　备注：无
+            </td>
+          </tr>
+
+          <!-- 鸭肠 -->
+          <tr class="item-row" data-name="鸭肠" data-spec="1" data-price="12">
+            <td><input type="checkbox" class="item-check"></td>
+            <td>鸭肠</td>
+            <td>1</td>
+            <td>12</td>
+            <td><input type="number" class="qty qty-input" value="1" min="1"></td>
+            <td class="row-total">0.00</td>
+          </tr>
+          <tr class="extra-row">
+            <td colspan="6">
+              表格信息：品类名称：鸭肠　净重量/规格：1　价格：12 元　备注：无
+            </td>
+          </tr>
+
+          <!-- 小墨鱼仔 -->
+          <tr class="item-row" data-name="小墨鱼仔" data-spec="1" data-price="25">
+            <td><input type="checkbox" class="item-check"></td>
+            <td>小墨鱼仔</td>
+            <td>1</td>
+            <td>25</td>
+            <td><input type="number" class="qty qty-input" value="1" min="1"></td>
+            <td class="row-total">0.00</td>
+          </tr>
+          <tr class="extra-row">
+            <td colspan="6">
+              表格信息：品类名称：小墨鱼仔　净重量/规格：1　价格：25 元　备注：无
+            </td>
+          </tr>
+
+          <!-- 小八爪鱼 -->
+          <tr class="item-row" data-name="小八爪鱼" data-spec="1" data-price="30">
+            <td><input type="checkbox" class="item-check"></td>
+            <td>小八爪鱼</td>
+            <td>1</td>
+            <td>30</td>
+            <td><input type="number" class="qty qty-input" value="1" min="1"></td>
+            <td class="row-total">0.00</td>
+          </tr>
+          <tr class="extra-row">
+            <td colspan="6">
+              表格信息：品类名称：小八爪鱼　净重量/规格：1　价格：30 元　备注：无
+            </td>
+          </tr>
+
+          <!-- 北极甜虾 -->
+          <tr class="item-row" data-name="北极甜虾" data-spec="1" data-price="32">
+            <td><input type="checkbox" class="item-check"></td>
+            <td>北极甜虾</td>
+            <td>1</td>
+            <td>32</td>
+            <td><input type="number" class="qty qty-input" value="1" min="1"></td>
+            <td class="row-total">0.00</td>
+          </tr>
+          <tr class="extra-row">
+            <td colspan="6">
+              表格信息：品类名称：北极甜虾　净重量/规格：1　价格：32 元　备注：无
+            </td>
+          </tr>
+
+          <!-- 虾仁 -->
+          <tr class="item-row" data-name="虾仁" data-spec="1" data-price="35">
+            <td><input type="checkbox" class="item-check"></td>
+            <td>虾仁</td>
+            <td>1</td>
+            <td>35</td>
+            <td><input type="number" class="qty qty-input" value="1" min="1"></td>
+            <td class="row-total">0.00</td>
+          </tr>
+          <tr class="extra-row">
+            <td colspan="6">
+              表格信息：品类名称：虾仁　净重量/规格：1　价格：35 元　备注：无
+            </td>
+          </tr>
+
+          <!-- 带鱼 -->
+          <tr class="item-row" data-name="带鱼" data-spec="1" data-price="16">
+            <td><input type="checkbox" class="item-check"></td>
+            <td>带鱼</td>
+            <td>1</td>
+            <td>16</td>
+            <td><input type="number" class="qty qty-input" value="1" min="1"></td>
+            <td class="row-total">0.00</td>
+          </tr>
+          <tr class="extra-row">
+            <td colspan="6">
+              表格信息：品类名称：带鱼　净重量/规格：1　价格：16 元　备注：无
+            </td>
+          </tr>
+
+          <!-- 巴沙鱼 -->
+          <tr class="item-row" data-name="巴沙鱼" data-spec="1" data-price="12">
+            <td><input type="checkbox" class="item-check"></td>
+            <td>巴沙鱼</td>
+            <td>1</td>
+            <td>12</td>
+            <td><input type="number" class="qty qty-input" value="1" min="1"></td>
+            <td class="row-total">0.00</td>
+          </tr>
+          <tr class="extra-row">
+            <td colspan="6">
+              表格信息：品类名称：巴沙鱼　净重量/规格：1　价格：12 元　备注：无
+            </td>
+          </tr>
+
+          <!-- 青虾 -->
+          <tr class="item-row" data-name="青虾" data-spec="净重2.8斤" data-price="68">
+            <td><input type="checkbox" class="item-check"></td>
+            <td>青虾</td>
+            <td>净重2.8斤</td>
+            <td>68</td>
+            <td><input type="number" class="qty qty-input" value="1" min="1"></td>
+            <td class="row-total">0.00</td>
+          </tr>
+          <tr class="extra-row">
+            <td colspan="6">
+              表格信息：品类名称：青虾　净重量/规格：净重2.8斤　价格：68 元　备注：无
+            </td>
+          </tr>
+
+          <!-- 虾尾 -->
+          <tr class="item-row" data-name="虾尾" data-spec="1" data-price="18">
+            <td><input type="checkbox" class="item-check"></td>
+            <td>虾尾</td>
+            <td>1</td>
+            <td>18</td>
+            <td><input type="number" class="qty qty-input" value="1" min="1"></td>
+            <td class="row-total">0.00</td>
+          </tr>
+          <tr class="extra-row">
+            <td colspan="6">
+              表格信息：品类名称：虾尾　净重量/规格：1　价格：18 元　备注：无
+            </td>
+          </tr>
+
+          <!-- 毛肚 -->
+          <tr class="item-row" data-name="毛肚" data-spec="1" data-price="32">
+            <td><input type="checkbox" class="item-check"></td>
+            <td>毛肚</td>
+            <td>1</td>
+            <td>32</td>
+            <td><input type="number" class="qty qty-input" value="1" min="1"></td>
+            <td class="row-total">0.00</td>
+          </tr>
+          <tr class="extra-row">
+            <td colspan="6">
+              表格信息：品类名称：毛肚　净重量/规格：1　价格：32 元　备注：无
+            </td>
+          </tr>
+
+          <!-- 烤肠 -->
+          <tr class="item-row" data-name="烤肠" data-spec="一公斤" data-price="25">
+            <td><input type="checkbox" class="item-check"></td>
+            <td>烤肠</td>
+            <td>一公斤</td>
+            <td>25</td>
+            <td><input type="number" class="qty qty-input" value="1" min="1"></td>
+            <td class="row-total">0.00</td>
+          </tr>
+          <tr class="extra-row">
+            <td colspan="6">
+              表格信息：品类名称：烤肠　净重量/规格：一公斤　价格：25 元　备注：无
+            </td>
+          </tr>
+
+          <!-- 骨肉相连 -->
+          <tr class="item-row" data-name="骨肉相连" data-spec="一公斤" data-price="25">
+            <td><input type="checkbox" class="item-check"></td>
+            <td>骨肉相连</td>
+            <td>一公斤</td>
+            <td>25</td>
+            <td><input type="number" class="qty qty-input" value="1" min="1"></td>
+            <td class="row-total">0.00</td>
+          </tr>
+          <tr class="extra-row">
+            <td colspan="6">
+              表格信息：品类名称：骨肉相连　净重量/规格：一公斤　价格：25 元　备注：无
+            </td>
+          </tr>
+
+          <!-- 鸡柳 -->
+          <tr class="item-row" data-name="鸡柳" data-spec="一公斤" data-price="25">
+            <td><input type="checkbox" class="item-check"></td>
+            <td>鸡柳</td>
+            <td>一公斤</td>
+            <td>25</td>
+            <td><input type="number" class="qty qty-input" value="1" min="1"></td>
+            <td class="row-total">0.00</td>
+          </tr>
+          <tr class="extra-row">
+            <td colspan="6">
+              表格信息：品类名称：鸡柳　净重量/规格：一公斤　价格：25 元　备注：无
+            </td>
+          </tr>
+
+          <!-- 烤翅 -->
+          <tr class="item-row" data-name="烤翅" data-spec="1" data-price="26">
+            <td><input type="checkbox" class="item-check"></td>
+            <td>烤翅</td>
+            <td>1</td>
+            <td>26</td>
+            <td><input type="number" class="qty qty-input" value="1" min="1"></td>
+            <td class="row-total">0.00</td>
+          </tr>
+          <tr class="extra-row">
+            <td colspan="6">
+              表格信息：品类名称：烤翅　净重量/规格：1　价格：26 元　备注：无
+            </td>
+          </tr>
+
+          <!-- 烤翅 三斤的 -->
+          <tr class="item-row" data-name="烤翅" data-spec="三斤的" data-price="60">
+            <td><input type="checkbox" class="item-check"></td>
+            <td>烤翅</td>
+            <td>三斤的</td>
+            <td>60</td>
+            <td><input type="number" class="qty qty-input" value="1" min="1"></td>
+            <td class="row-total">0.00</td>
+          </tr>
+          <tr class="extra-row">
+            <td colspan="6">
+              表格信息：品类名称：烤翅　净重量/规格：三斤的　价格：60 元　备注：无
+            </td>
+          </tr>
+
+          <!-- 培根 -->
+          <tr class="item-row" data-name="培根" data-spec="—" data-price="15">
+            <td><input type="checkbox" class="item-check"></td>
+            <td>培根</td>
+            <td>—</td>
+            <td>15</td>
+            <td><input type="number" class="qty qty-input" value="1" min="1"></td>
+            <td class="row-total">0.00</td>
+          </tr>
+          <tr class="extra-row">
+            <td colspan="6">
+              表格信息：品类名称：培根　净重量/规格：—　价格：15 元　备注：无
+            </td>
+          </tr>
+
+          <!-- 嫩牛肉 -->
+          <tr class="item-row" data-name="嫩牛肉" data-spec="—" data-price="15">
+            <td><input type="checkbox" class="item-check"></td>
+            <td>嫩牛肉</td>
+            <td>—</td>
+            <td>15</td>
+            <td><input type="number" class="qty qty-input" value="1" min="1"></td>
+            <td class="row-total">0.00</td>
+          </tr>
+          <tr class="extra-row">
+            <td colspan="6">
+              表格信息：品类名称：嫩牛肉　净重量/规格：—　价格：15 元　备注：无
+            </td>
+          </tr>
+
+          <!-- 麻辣牛肉 -->
+          <tr class="item-row" data-name="麻辣牛肉" data-spec="—" data-price="15">
+            <td><input type="checkbox" class="item-check"></td>
+            <td>麻辣牛肉</td>
+            <td>—</td>
+            <td>15</td>
+            <td><input type="number" class="qty qty-input" value="1" min="1"></td>
+            <td class="row-total">0.00</td>
+          </tr>
+          <tr class="extra-row">
+            <td colspan="6">
+              表格信息：品类名称：麻辣牛肉　净重量/规格：—　价格：15 元　备注：无
+            </td>
+          </tr>
+
+          <!-- 双椒牛肉 -->
+          <tr class="item-row" data-name="双椒牛肉" data-spec="—" data-price="15">
+            <td><input type="checkbox" class="item-check"></td>
+            <td>双椒牛肉</td>
+            <td>—</td>
+            <td>15</td>
+            <td><input type="number" class="qty qty-input" value="1" min="1"></td>
+            <td class="row-total">0.00</td>
+          </tr>
+          <tr class="extra-row">
+            <td colspan="6">
+              表格信息：品类名称：双椒牛肉　净重量/规格：—　价格：15 元　备注：无
+            </td>
+          </tr>
+
+          <!-- 小郡肝 -->
+          <tr class="item-row" data-name="小郡肝" data-spec="—" data-price="15">
+            <td><input type="checkbox" class="item-check"></td>
+            <td>小郡肝</td>
+            <td>—</td>
+            <td>15</td>
+            <td><input type="number" class="qty qty-input" value="1" min="1"></td>
+            <td class="row-total">0.00</td>
+          </tr>
+          <tr class="extra-row">
+            <td colspan="6">
+              表格信息：品类名称：小郡肝　净重量/规格：—　价格：15 元　备注：无
+            </td>
+          </tr>
+
+          <!-- 贡菜 -->
+          <tr class="item-row" data-name="贡菜" data-spec="—" data-price="12">
+            <td><input type="checkbox" class="item-check"></td>
+            <td>贡菜</td>
+            <td>—</td>
+            <td>12</td>
+            <td><input type="number" class="qty qty-input" value="1" min="1"></td>
+            <td class="row-total">0.00</td>
+          </tr>
+          <tr class="extra-row">
+            <td colspan="6">
+              表格信息：品类名称：贡菜　净重量/规格：—　价格：12 元　备注：无
+            </td>
+          </tr>
+
+          <!-- 小油条 -->
+          <tr class="item-row" data-name="小油条" data-spec="—" data-price="13">
+            <td><input type="checkbox" class="item-check"></td>
+            <td>小油条</td>
+            <td>—</td>
+            <td>13</td>
+            <td><input type="number" class="qty qty-input" value="1" min="1"></td>
+            <td class="row-total">0.00</td>
+          </tr>
+          <tr class="extra-row">
+            <td colspan="6">
+              表格信息：品类名称：小油条　净重量/规格：—　价格：13 元　备注：无
+            </td>
+          </tr>
+
+          <!-- 爆浆糍粑 -->
+          <tr class="item-row" data-name="爆浆糍粑" data-spec="—" data-price="8">
+            <td><input type="checkbox" class="item-check"></td>
+            <td>爆浆糍粑</td>
+            <td>—</td>
+            <td>8</td>
+            <td><input type="number" class="qty qty-input" value="1" min="1"></td>
+            <td class="row-total">0.00</td>
+          </tr>
+          <tr class="extra-row">
+            <td colspan="6">
+              表格信息：品类名称：爆浆糍粑　净重量/规格：—　价格：8 元　备注：无
+            </td>
+          </tr>
+
+          <!-- 汤圆 -->
+          <tr class="item-row" data-name="汤圆" data-spec="—" data-price="6">
+            <td><input type="checkbox" class="item-check"></td>
+            <td>汤圆</td>
+            <td>—</td>
+            <td>6</td>
+            <td><input type="number" class="qty qty-input" value="1" min="1"></td>
+            <td class="row-total">0.00</td>
+          </tr>
+          <tr class="extra-row">
+            <td colspan="6">
+              表格信息：品类名称：汤圆　净重量/规格：—　价格：6 元　备注：无
+            </td>
+          </tr>
+
+          <!-- 水饺 肉 -->
+          <tr class="item-row" data-name="水饺" data-spec="肉" data-price="10">
+            <td><input type="checkbox" class="item-check"></td>
+            <td>水饺</td>
+            <td>肉</td>
+            <td>10</td>
+            <td><input type="number" class="qty qty-input" value="1" min="1"></td>
+            <td class="row-total">0.00</td>
+          </tr>
+          <tr class="extra-row">
+            <td colspan="6">
+              表格信息：品类名称：水饺　净重量/规格：肉　价格：10 元　备注：无
+            </td>
+          </tr>
+
+          <!-- 水饺 素 -->
+          <tr class="item-row" data-name="水饺" data-spec="素" data-price="10">
+            <td><input type="checkbox" class="item-check"></td>
+            <td>水饺</td>
+            <td>素</td>
+            <td>10</td>
+            <td><input type="number" class="qty qty-input" value="1" min="1"></td>
+            <td class="row-total">0.00</td>
+          </tr>
+          <tr class="extra-row">
+            <td colspan="6">
+              表格信息：品类名称：水饺　净重量/规格：素　价格：10 元　备注：无
+            </td>
+          </tr>
+
+          <!-- 手抓饼10 葱香 -->
+          <tr class="item-row" data-name="手抓饼10" data-spec="葱香" data-price="10">
+            <td><input type="checkbox" class="item-check"></td>
+            <td>手抓饼10</td>
+            <td>葱香</td>
+            <td>10</td>
+            <td><input type="number" class="qty qty-input" value="1" min="1"></td>
+            <td class="row-total">0.00</td>
+          </tr>
+          <tr class="extra-row">
+            <td colspan="6">
+              表格信息：品类名称：手抓饼10　净重量/规格：葱香　价格：10 元　备注：无
+            </td>
+          </tr>
+
+          <!-- 手抓饼10 原味 -->
+          <tr class="item-row" data-name="手抓饼10" data-spec="原味" data-price="10">
+            <td><input type="checkbox" class="item-check"></td>
+            <td>手抓饼10</td>
+            <td>原味</td>
+            <td>10</td>
+            <td><input type="number" class="qty qty-input" value="1" min="1"></td>
+            <td class="row-total">0.00</td>
+          </tr>
+          <tr class="extra-row">
+            <td colspan="6">
+              表格信息：品类名称：手抓饼10　净重量/规格：原味　价格：10 元　备注：无
+            </td>
+          </tr>
+
+          <!-- 盐酥鸡 -->
+          <tr class="item-row" data-name="盐酥鸡" data-spec="—" data-price="24">
+            <td><input type="checkbox" class="item-check"></td>
+            <td>盐酥鸡</td>
+            <td>—</td>
+            <td>24</td>
+            <td><input type="number" class="qty qty-input" value="1" min="1"></td>
+            <td class="row-total">0.00</td>
+          </tr>
+          <tr class="extra-row">
+            <td colspan="6">
+              表格信息：品类名称：盐酥鸡　净重量/规格：—　价格：24 元　备注：无
+            </td>
+          </tr>
+
+          <!-- 南瓜饼 -->
+          <tr class="item-row" data-name="南瓜饼" data-spec="—" data-price="9">
+            <td><input type="checkbox" class="item-check"></td>
+            <td>南瓜饼</td>
+            <td>—</td>
+            <td>9</td>
+            <td><input type="number" class="qty qty-input" value="1" min="1"></td>
+            <td class="row-total">0.00</td>
+          </tr>
+          <tr class="extra-row">
+            <td colspan="6">
+              表格信息：品类名称：南瓜饼　净重量/规格：—　价格：9 元　备注：无
+            </td>
+          </tr>
+
+          <!-- 包浆豆腐 -->
+          <tr class="item-row" data-name="包浆豆腐" data-spec="—" data-price="10">
+            <td><input type="checkbox" class="item-check"></td>
+            <td>包浆豆腐</td>
+            <td>—</td>
+            <td>10</td>
+            <td><input type="number" class="qty qty-input" value="1" min="1"></td>
+            <td class="row-total">0.00</td>
+          </tr>
+          <tr class="extra-row">
+            <td colspan="6">
+              表格信息：品类名称：包浆豆腐　净重量/规格：—　价格：10 元　备注：无
+            </td>
+          </tr>
+
+          <!-- 麻花 -->
+          <tr class="item-row" data-name="麻花" data-spec="—" data-price="4">
+            <td><input type="checkbox" class="item-check"></td>
+            <td>麻花</td>
+            <td>—</td>
+            <td>4</td>
+            <td><input type="number" class="qty qty-input" value="1" min="1"></td>
+            <td class="row-total">0.00</td>
+          </tr>
+          <tr class="extra-row">
+            <td colspan="6">
+              表格信息：品类名称：麻花　净重量/规格：—　价格：4 元　备注：无
+            </td>
+          </tr>
+
+          <!-- 豆皮 -->
+          <tr class="item-row" data-name="豆皮" data-spec="—" data-price="5">
+            <td><input type="checkbox" class="item-check"></td>
+            <td>豆皮</td>
+            <td>—</td>
+            <td>5</td>
+            <td><input type="number" class="qty qty-input" value="1" min="1"></td>
+            <td class="row-total">0.00</td>
+          </tr>
+          <tr class="extra-row">
+            <td colspan="6">
+              表格信息：品类名称：豆皮　净重量/规格：—　价格：5 元　备注：无
+            </td>
+          </tr>
+
+          <!-- 小腊肠 -->
+          <tr class="item-row" data-name="小腊肠" data-spec="—" data-price="9">
+            <td><input type="checkbox" class="item-check"></td>
+            <td>小腊肠</td>
+            <td>—</td>
+            <td>9</td>
+            <td><input type="number" class="qty qty-input" value="1" min="1"></td>
+            <td class="row-total">0.00</td>
+          </tr>
+          <tr class="extra-row">
+            <td colspan="6">
+              表格信息：品类名称：小腊肠　净重量/规格：—　价格：9 元　备注：无
+            </td>
+          </tr>
+
+          <!-- 笋尖 -->
+          <tr class="item-row" data-name="笋尖" data-spec="—" data-price="8">
+            <td><input type="checkbox" class="item-check"></td>
+            <td>笋尖</td>
+            <td>—</td>
+            <td>8</td>
+            <td><input type="number" class="qty qty-input" value="1" min="1"></td>
+            <td class="row-total">0.00</td>
+          </tr>
+          <tr class="extra-row">
+            <td colspan="6">
+              表格信息：品类名称：笋尖　净重量/规格：—　价格：8 元　备注：无
+            </td>
+          </tr>
+
+          <!-- 粉丝 -->
+          <tr class="item-row" data-name="粉丝" data-spec="—" data-price="5">
+            <td><input type="checkbox" class="item-check"></td>
+            <td>粉丝</td>
+            <td>—</td>
+            <td>5</td>
+            <td><input type="number" class="qty qty-input" value="1" min="1"></td>
+            <td class="row-total">0.00</td>
+          </tr>
+          <tr class="extra-row">
+            <td colspan="6">
+              表格信息：品类名称：粉丝　净重量/规格：—　价格：5 元　备注：无
+            </td>
+          </tr>
+
+          <!-- 宽粉 -->
+          <tr class="item-row" data-name="宽粉" data-spec="—" data-price="5">
+            <td><input type="checkbox" class="item-check"></td>
+            <td>宽粉</td>
+            <td>—</td>
+            <td>5</td>
+            <td><input type="number" class="qty qty-input" value="1" min="1"></td>
+            <td class="row-total">0.00</td>
+          </tr>
+          <tr class="extra-row">
+            <td colspan="6">
+              表格信息：品类名称：宽粉　净重量/规格：—　价格：5 元　备注：无
+            </td>
+          </tr>
+
+          <!-- 土豆粉 -->
+          <tr class="item-row" data-name="土豆粉" data-spec="—" data-price="5">
+            <td><input type="checkbox" class="item-check"></td>
+            <td>土豆粉</td>
+            <td>—</td>
+            <td>5</td>
+            <td><input type="number" class="qty qty-input" value="1" min="1"></td>
+            <td class="row-total">0.00</td>
+          </tr>
+          <tr class="extra-row">
+            <td colspan="6">
+              表格信息：品类名称：土豆粉　净重量/规格：—　价格：5 元　备注：无
+            </td>
+          </tr>
+
+          <!-- 川粉 -->
+          <tr class="item-row" data-name="川粉" data-spec="—" data-price="5">
+            <td><input type="checkbox" class="item-check"></td>
+            <td>川粉</td>
+            <td>—</td>
+            <td>5</td>
+            <td><input type="number" class="qty qty-input" value="1" min="1"></td>
+            <td class="row-total">0.00</td>
+          </tr>
+          <tr class="extra-row">
+            <td colspan="6">
+              表格信息：品类名称：川粉　净重量/规格：—　价格：5 元　备注：无
+            </td>
+          </tr>
+
+          <!-- 水晶粉 -->
+          <tr class="item-row" data-name="水晶粉" data-spec="—" data-price="3">
+            <td><input type="checkbox" class="item-check"></td>
+            <td>水晶粉</td>
+            <td>—</td>
+            <td>3</td>
+            <td><input type="number" class="qty qty-input" value="1" min="1"></td>
+            <td class="row-total">0.00</td>
+          </tr>
+          <tr class="extra-row">
+            <td colspan="6">
+              表格信息：品类名称：水晶粉　净重量/规格：—　价格：3 元　备注：无
+            </td>
+          </tr>
+
+          <!-- 鸡蛋干 -->
+          <tr class="item-row" data-name="鸡蛋干" data-spec="—" data-price="4">
+            <td><input type="checkbox" class="item-check"></td>
+            <td>鸡蛋干</td>
+            <td>—</td>
+            <td>4</td>
+            <td><input type="number" class="qty qty-input" value="1" min="1"></td>
+            <td class="row-total">0.00</td>
+          </tr>
+          <tr class="extra-row">
+            <td colspan="6">
+              表格信息：品类名称：鸡蛋干　净重量/规格：—　价格：4 元　备注：无
+            </td>
+          </tr>
+
+          <!-- 年糕 -->
+          <tr class="item-row" data-name="年糕" data-spec="—" data-price="5">
+            <td><input type="checkbox" class="item-check"></td>
+            <td>年糕</td>
+            <td>—</td>
+            <td>5</td>
+            <td><input type="number" class="qty qty-input" value="1" min="1"></td>
+            <td class="row-total">0.00</td>
+          </tr>
+          <tr class="extra-row">
+            <td colspan="6">
+              表格信息：品类名称：年糕　净重量/规格：—　价格：5 元　备注：无
+            </td>
+          </tr>
+
+          <!-- 梅林午餐肉 -->
+          <tr class="item-row" data-name="梅林午餐肉" data-spec="—" data-price="13">
+            <td><input type="checkbox" class="item-check"></td>
+            <td>梅林午餐肉</td>
+            <td>—</td>
+            <td>13</td>
+            <td><input type="number" class="qty qty-input" value="1" min="1"></td>
+            <td class="row-total">0.00</td>
+          </tr>
+          <tr class="extra-row">
+            <td colspan="6">
+              表格信息：品类名称：梅林午餐肉　净重量/规格：—　价格：13 元　备注：无
+            </td>
+          </tr>
+
+          <!-- 双汇午餐肉 -->
+          <tr class="item-row" data-name="双汇午餐肉" data-spec="—" data-price="12">
+            <td><input type="checkbox" class="item-check"></td>
+            <td>双汇午餐肉</td>
+            <td>—</td>
+            <td>12</td>
+            <td><input type="number" class="qty qty-input" value="1" min="1"></td>
+            <td class="row-total">0.00</td>
+          </tr>
+          <tr class="extra-row">
+            <td colspan="6">
+              表格信息：品类名称：双汇午餐肉　净重量/规格：—　价格：12 元　备注：无
+            </td>
+          </tr>
+
+          <!-- 响铃卷 -->
+          <tr class="item-row" data-name="响铃卷" data-spec="—" data-price="8">
+            <td><input type="checkbox" class="item-check"></td>
+            <td>响铃卷</td>
+            <td>—</td>
+            <td>8</td>
+            <td><input type="number" class="qty qty-input" value="1" min="1"></td>
+            <td class="row-total">0.00</td>
+          </tr>
+          <tr class="extra-row">
+            <td colspan="6">
+              表格信息：品类名称：响铃卷　净重量/规格：—　价格：8 元　备注：无
+            </td>
+          </tr>
+
+          <!-- 砂锅面 -->
+          <tr class="item-row" data-name="砂锅面" data-spec="—" data-price="1">
+            <td><input type="checkbox" class="item-check"></td>
+            <td>砂锅面</td>
+            <td>—</td>
+            <td>1</td>
+            <td><input type="number" class="qty qty-input" value="1" min="1"></td>
+            <td class="row-total">0.00</td>
+          </tr>
+          <tr class="extra-row">
+            <td colspan="6">
+              表格信息：品类名称：砂锅面　净重量/规格：—　价格：1 元　备注：无
+            </td>
+          </tr>
+
+          <!-- 海底捞蘸料 香辣 -->
+          <tr class="item-row" data-name="海底捞蘸料" data-spec="香辣" data-price="5">
+            <td><input type="checkbox" class="item-check"></td>
+            <td>海底捞蘸料</td>
+            <td>香辣</td>
+            <td>5</td>
+            <td><input type="number" class="qty qty-input" value="1" min="1"></td>
+            <td class="row-total">0.00</td>
+          </tr>
+          <tr class="extra-row">
+            <td colspan="6">
+              表格信息：品类名称：海底捞蘸料　净重量/规格：香辣　价格：5 元　备注：无
+            </td>
+          </tr>
+
+          <!-- 海底捞蘸料 原味 -->
+          <tr class="item-row" data-name="海底捞蘸料" data-spec="原味" data-price="5">
+            <td><input type="checkbox" class="item-check"></td>
+            <td>海底捞蘸料</td>
+            <td>原味</td>
+            <td>5</td>
+            <td><input type="number" class="qty qty-input" value="1" min="1"></td>
+            <td class="row-total">0.00</td>
+          </tr>
+          <tr class="extra-row">
+            <td colspan="6">
+              表格信息：品类名称：海底捞蘸料　净重量/规格：原味　价格：5 元　备注：无
+            </td>
+          </tr>
+
+          <!-- 纯芝麻酱 -->
+          <tr class="item-row" data-name="纯芝麻酱" data-spec="—" data-price="10">
+            <td><input type="checkbox" class="item-check"></td>
+            <td>纯芝麻酱</td>
+            <td>—</td>
+            <td>10</td>
+            <td><input type="number" class="qty qty-input" value="1" min="1"></td>
+            <td class="row-total">0.00</td>
+          </tr>
+          <tr class="extra-row">
+            <td colspan="6">
+              表格信息：品类名称：纯芝麻酱　净重量/规格：—　价格：10 元　备注：无
+            </td>
+          </tr>
+
+          <!-- 复合型芝麻酱 -->
+          <tr class="item-row" data-name="复合型芝麻酱" data-spec="—" data-price="8">
+            <td><input type="checkbox" class="item-check"></td>
+            <td>复合型芝麻酱</td>
+            <td>—</td>
+            <td>8</td>
+            <td><input type="number" class="qty qty-input" value="1" min="1"></td>
+            <td class="row-total">0.00</td>
+          </tr>
+          <tr class="extra-row">
+            <td colspan="6">
+              表格信息：品类名称：复合型芝麻酱　净重量/规格：—　价格：8 元　备注：无
+            </td>
+          </tr>
+
+          <!-- 二八酱 -->
+          <tr class="item-row" data-name="二八酱" data-spec="—" data-price="14">
+            <td><input type="checkbox" class="item-check"></td>
+            <td>二八酱</td>
+            <td>—</td>
+            <td>14</td>
+            <td><input type="number" class="qty qty-input" value="1" min="1"></td>
+            <td class="row-total">0.00</td>
+          </tr>
+          <tr class="extra-row">
+            <td colspan="6">
+              表格信息：品类名称：二八酱　净重量/规格：—　价格：14 元　备注：无
+            </td>
+          </tr>
+
+          <!-- 香油 -->
+          <tr class="item-row" data-name="香油" data-spec="—" data-price="4">
+            <td><input type="checkbox" class="item-check"></td>
+            <td>香油</td>
+            <td>—</td>
+            <td>4</td>
+            <td><input type="number" class="qty qty-input" value="1" min="1"></td>
+            <td class="row-total">0.00</td>
+          </tr>
+          <tr class="extra-row">
+            <td colspan="6">
+              表格信息：品类名称：香油　净重量/规格：—　价格：4 元　备注：无
+            </td>
+          </tr>
+
+          <!-- 麻油 -->
+          <tr class="item-row" data-name="麻油" data-spec="—" data-price="4">
+            <td><input type="checkbox" class="item-check"></td>
+            <td>麻油</td>
+            <td>—</td>
+            <td>4</td>
+            <td><input type="number" class="qty qty-input" value="1" min="1"></td>
+            <td class="row-total">0.00</td>
+          </tr>
+          <tr class="extra-row">
+            <td colspan="6">
+              表格信息：品类名称：麻油　净重量/规格：—　价格：4 元　备注：无
+            </td>
+          </tr>
+
+          <!-- 海带苗 -->
+          <tr class="item-row" data-name="海带苗" data-spec="—" data-price="5">
+            <td><input type="checkbox" class="item-check"></td>
+            <td>海带苗</td>
+            <td>—</td>
+            <td>5</td>
+            <td><input type="number" class="qty qty-input" value="1" min="1"></td>
+            <td class="row-total">0.00</td>
+          </tr>
+          <tr class="extra-row">
+            <td colspan="6">
+              表格信息：品类名称：海带苗　净重量/规格：—　价格：5 元　备注：无
+            </td>
+          </tr>
+
+          <!-- 鞭炮笋 -->
+          <tr class="item-row" data-name="鞭炮笋" data-spec="—" data-price="5">
+            <td><input type="checkbox" class="item-check"></td>
+            <td>鞭炮笋</td>
+            <td>—</td>
+            <td>5</td>
+            <td><input type="number" class="qty qty-input" value="1" min="1"></td>
+            <td class="row-total">0.00</td>
+          </tr>
+          <tr class="extra-row">
+            <td colspan="6">
+              表格信息：品类名称：鞭炮笋　净重量/规格：—　价格：5 元　备注：无
+            </td>
+          </tr>
+
+          <!-- 海底捞 清油 -->
+          <tr class="item-row" data-name="海底捞" data-spec="清油" data-price="12">
+            <td><input type="checkbox" class="item-check"></td>
+            <td>海底捞</td>
+            <td>清油</td>
+            <td>12</td>
+            <td><input type="number" class="qty qty-input" value="1" min="1"></td>
+            <td class="row-total">0.00</td>
+          </tr>
+          <tr class="extra-row">
+            <td colspan="6">
+              表格信息：品类名称：海底捞　净重量/规格：清油　价格：12 元　备注：无
+            </td>
+          </tr>
+
+          <!-- 海底捞 三鲜 -->
+          <tr class="item-row" data-name="海底捞" data-spec="三鲜" data-price="12">
+            <td><input type="checkbox" class="item-check"></td>
+            <td>海底捞</td>
+            <td>三鲜</td>
+            <td>12</td>
+            <td><input type="number" class="qty qty-input" value="1" min="1"></td>
+            <td class="row-total">0.00</td>
+          </tr>
+          <tr class="extra-row">
+            <td colspan="6">
+              表格信息：品类名称：海底捞　净重量/规格：三鲜　价格：12 元　备注：无
+            </td>
+          </tr>
+
+          <!-- 海底捞 菌汤 -->
+          <tr class="item-row" data-name="海底捞" data-spec="菌汤" data-price="12">
+            <td><input type="checkbox" class="item-check"></td>
+            <td>海底捞</td>
+            <td>菌汤</td>
+            <td>12</td>
+            <td><input type="number" class="qty qty-input" value="1" min="1"></td>
+            <td class="row-total">0.00</td>
+          </tr>
+          <tr class="extra-row">
+            <td colspan="6">
+              表格信息：品类名称：海底捞　净重量/规格：菌汤　价格：12 元　备注：无
+            </td>
+          </tr>
+
+          <!-- 海底捞 番茄 -->
+          <tr class="item-row" data-name="海底捞" data-spec="番茄" data-price="12">
+            <td><input type="checkbox" class="item-check"></td>
+            <td>海底捞</td>
+            <td>番茄</td>
+            <td>12</td>
+            <td><input type="number" class="qty qty-input" value="1" min="1"></td>
+            <td class="row-total">0.00</td>
+          </tr>
+          <tr class="extra-row">
+            <td colspan="6">
+              表格信息：品类名称：海底捞　净重量/规格：番茄　价格：12 元　备注：无
+            </td>
+          </tr>
+
+          <!-- 海底捞牛油 500克 -->
+          <tr class="item-row" data-name="海底捞牛油" data-spec="500克" data-price="20">
+            <td><input type="checkbox" class="item-check"></td>
+            <td>海底捞牛油</td>
+            <td>500克</td>
+            <td>20</td>
+            <td><input type="number" class="qty qty-input" value="1" min="1"></td>
+            <td class="row-total">0.00</td>
+          </tr>
+          <tr class="extra-row">
+            <td colspan="6">
+              表格信息：品类名称：海底捞牛油　净重量/规格：500克　价格：20 元　备注：无
+            </td>
+          </tr>
+
+          <!-- 海底捞牛油 360/四小块 -->
+          <tr class="item-row" data-name="海底捞牛油" data-spec="360/四小块" data-price="18">
+            <td><input type="checkbox" class="item-check"></td>
+            <td>海底捞牛油</td>
+            <td>360/四小块</td>
+            <td>18</td>
+            <td><input type="number" class="qty qty-input" value="1" min="1"></td>
+            <td class="row-total">0.00</td>
+          </tr>
+          <tr class="extra-row">
+            <td colspan="6">
+              表格信息：品类名称：海底捞牛油　净重量/规格：360/四小块　价格：18 元　备注：无
+            </td>
+          </tr>
+
+          <!-- 好人家牛油 500克 -->
+          <tr class="item-row" data-name="好人家牛油" data-spec="500克" data-price="25">
+            <td><input type="checkbox" class="item-check"></td>
+            <td>好人家牛油</td>
+            <td>500克</td>
+            <td>25</td>
+            <td><input type="number" class="qty qty-input" value="1" min="1"></td>
+            <td class="row-total">0.00</td>
+          </tr>
+          <tr class="extra-row">
+            <td colspan="6">
+              表格信息：品类名称：好人家牛油　净重量/规格：500克　价格：25 元　备注：无
+            </td>
+          </tr>
+
+          <!-- 好人家牛油 四小块 -->
+          <tr class="item-row" data-name="好人家牛油" data-spec="四小块" data-price="22">
+            <td><input type="checkbox" class="item-check"></td>
+            <td>好人家牛油</td>
+            <td>四小块</td>
+            <td>22</td>
+            <td><input type="number" class="qty qty-input" value="1" min="1"></td>
+            <td class="row-total">0.00</td>
+          </tr>
+          <tr class="extra-row">
+            <td colspan="6">
+              表格信息：品类名称：好人家牛油　净重量/规格：四小块　价格：22 元　备注：无
+            </td>
+          </tr>
+
+          <!-- 好人家厚牛油 500克 -->
+          <tr class="item-row" data-name="好人家厚牛油" data-spec="500克" data-price="30">
+            <td><input type="checkbox" class="item-check"></td>
+            <td>好人家厚牛油</td>
+            <td>500克</td>
+            <td>30</td>
+            <td><input type="number" class="qty qty-input" value="1" min="1"></td>
+            <td class="row-total">0.00</td>
+          </tr>
+          <tr class="extra-row">
+            <td colspan="6">
+              表格信息：品类名称：好人家厚牛油　净重量/规格：500克　价格：30 元　备注：无
+            </td>
+          </tr>
+
+          <!-- 好人家 清油大包 -->
+          <tr class="item-row" data-name="好人家" data-spec="清油大包" data-price="27">
+            <td><input type="checkbox" class="item-check"></td>
+            <td>好人家</td>
+            <td>清油大包</td>
+            <td>27</td>
+            <td><input type="number" class="qty qty-input" value="1" min="1"></td>
+            <td class="row-total">0.00</td>
+          </tr>
+          <tr class="extra-row">
+            <td colspan="6">
+              表格信息：品类名称：好人家　净重量/规格：清油大包　价格：27 元　备注：无
+            </td>
+          </tr>
+
+          <!-- 好人家 清油小包 -->
+          <tr class="item-row" data-name="好人家" data-spec="清油小包" data-price="15">
+            <td><input type="checkbox" class="item-check"></td>
+            <td>好人家</td>
+            <td>清油小包</td>
+            <td>15</td>
+            <td><input type="number" class="qty qty-input" value="1" min="1"></td>
+            <td class="row-total">0.00</td>
+          </tr>
+          <tr class="extra-row">
+            <td colspan="6">
+              表格信息：品类名称：好人家　净重量/规格：清油小包　价格：15 元　备注：无
+            </td>
+          </tr>
+
+          <!-- 好人家 三鲜 -->
+          <tr class="item-row" data-name="好人家" data-spec="三鲜" data-price="12">
+            <td><input type="checkbox" class="item-check"></td>
+            <td>好人家</td>
+            <td>三鲜</td>
+            <td>12</td>
+            <td><input type="number" class="qty qty-input" value="1" min="1"></td>
+            <td class="row-total">0.00</td>
+          </tr>
+          <tr class="extra-row">
+            <td colspan="6">
+              表格信息：品类名称：好人家　净重量/规格：三鲜　价格：12 元　备注：无
+            </td>
+          </tr>
+
+          <!-- 好人家 牛油清汤 -->
+          <tr class="item-row" data-name="好人家" data-spec="牛油清汤" data-price="13">
+            <td><input type="checkbox" class="item-check"></td>
+            <td>好人家</td>
+            <td>牛油清汤</td>
+            <td>13</td>
+            <td><input type="number" class="qty qty-input" value="1" min="1"></td>
+            <td class="row-total">0.00</td>
+          </tr>
+          <tr class="extra-row">
+            <td colspan="6">
+              表格信息：品类名称：好人家　净重量/规格：牛油清汤　价格：13 元　备注：无
+            </td>
+          </tr>
+
+          <!-- 名扬 500克牛油 -->
+          <tr class="item-row" data-name="名扬" data-spec="500克牛油" data-price="28">
+            <td><input type="checkbox" class="item-check"></td>
+            <td>名扬</td>
+            <td>500克牛油</td>
+            <td>28</td>
+            <td><input type="number" class="qty qty-input" value="1" min="1"></td>
+            <td class="row-total">0.00</td>
+          </tr>
+          <tr class="extra-row">
+            <td colspan="6">
+              表格信息：品类名称：名扬　净重量/规格：500克牛油　价格：28 元　备注：无
+            </td>
+          </tr>
+
+          <!-- 名扬 四小块牛油 -->
+          <tr class="item-row" data-name="名扬" data-spec="四小块牛油" data-price="28">
+            <td><input type="checkbox" class="item-check"></td>
+            <td>名扬</td>
+            <td>四小块牛油</td>
+            <td>28</td>
+            <td><input type="number" class="qty qty-input" value="1" min="1"></td>
+            <td class="row-total">0.00</td>
+          </tr>
+          <tr class="extra-row">
+            <td colspan="6">
+              表格信息：品类名称：名扬　净重量/规格：四小块牛油　价格：28 元　备注：无
+            </td>
+          </tr>
+
+          <!-- 名扬 清油 -->
+          <tr class="item-row" data-name="名扬" data-spec="清油" data-price="18">
+            <td><input type="checkbox" class="item-check"></td>
+            <td>名扬</td>
+            <td>清油</td>
+            <td>18</td>
+            <td><input type="number" class="qty qty-input" value="1" min="1"></td>
+            <td class="row-total">0.00</td>
+          </tr>
+          <tr class="extra-row">
+            <td colspan="6">
+              表格信息：品类名称：名扬　净重量/规格：清油　价格：18 元　备注：无
+            </td>
+          </tr>
+
+          <!-- 德庄 牛油500 -->
+          <tr class="item-row" data-name="德庄" data-spec="牛油500" data-price="28">
+            <td><input type="checkbox" class="item-check"></td>
+            <td>德庄</td>
+            <td>牛油500</td>
+            <td>28</td>
+            <td><input type="number" class="qty qty-input" value="1" min="1"></td>
+            <td class="row-total">0.00</td>
+          </tr>
+          <tr class="extra-row">
+            <td colspan="6">
+              表格信息：品类名称：德庄　净重量/规格：牛油500　价格：28 元　备注：无
+            </td>
+          </tr>
+
+          <!-- 德庄 四小块 -->
+          <tr class="item-row" data-name="德庄" data-spec="四小块" data-price="23">
+            <td><input type="checkbox" class="item-check"></td>
+            <td>德庄</td>
+            <td>四小块</td>
+            <td>23</td>
+            <td><input type="number" class="qty qty-input" value="1" min="1"></td>
+            <td class="row-total">0.00</td>
+          </tr>
+          <tr class="extra-row">
+            <td colspan="6">
+              表格信息：品类名称：德庄　净重量/规格：四小块　价格：23 元　备注：无
+            </td>
+          </tr>
+
+          <!-- 德庄 三鲜 -->
+          <tr class="item-row" data-name="德庄" data-spec="三鲜" data-price="10">
+            <td><input type="checkbox" class="item-check"></td>
+            <td>德庄</td>
+            <td>三鲜</td>
+            <td>10</td>
+            <td><input type="number" class="qty qty-input" value="1" min="1"></td>
+            <td class="row-total">0.00</td>
+          </tr>
+          <tr class="extra-row">
+            <td colspan="6">
+              表格信息：品类名称：德庄　净重量/规格：三鲜　价格：10 元　备注：无
+            </td>
+          </tr>
+
+          <!-- 红99 -->
+          <tr class="item-row" data-name="红99" data-spec="—" data-price="12">
+            <td><input type="checkbox" class="item-check"></td>
+            <td>红99</td>
+            <td>—</td>
+            <td>12</td>
+            <td><input type="number" class="qty qty-input" value="1" min="1"></td>
+            <td class="row-total">0.00</td>
+          </tr>
+          <tr class="extra-row">
+            <td colspan="6">
+              表格信息：品类名称：红99　净重量/规格：—　价格：12 元　备注：无
+            </td>
+          </tr>
+
+          <!-- 小肥羊 -->
+          <tr class="item-row" data-name="小肥羊" data-spec="—" data-price="12">
+            <td><input type="checkbox" class="item-check"></td>
+            <td>小肥羊</td>
+            <td>—</td>
+            <td>12</td>
+            <td><input type="number" class="qty qty-input" value="1" min="1"></td>
+            <td class="row-total">0.00</td>
+          </tr>
+          <tr class="extra-row">
+            <td colspan="6">
+              表格信息：品类名称：小肥羊　净重量/规格：—　价格：12 元　备注：无
+            </td>
+          </tr>
 
         </tbody>
       </table>
@@ -2280,6 +2342,14 @@
     </div>
   </div>
 
+  <div id="confirm-preview" class="confirm-preview" aria-hidden="true">
+    <div class="confirm-preview-inner">
+      <img id="confirm-preview-img" class="confirm-preview-img" src="" alt="报价确认单">
+      <p class="confirm-preview-tip">长按上方图片可保存到手机相册</p>
+      <button type="button" id="confirm-preview-close" class="confirm-preview-close">返回</button>
+    </div>
+  </div>
+
   <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
   <script>
     const MIN_TOTAL = 80;
@@ -2293,6 +2363,9 @@
     const selectedCountEl = document.getElementById('selected-count');
     const selectedTotalEl = document.getElementById('selected-total');
     const selectedListEl = document.getElementById('selected-list');
+    const confirmPreview = document.getElementById('confirm-preview');
+    const confirmPreviewImg = document.getElementById('confirm-preview-img');
+    const confirmPreviewClose = document.getElementById('confirm-preview-close');
     let cachedPayload = null;
 
     function getRowKey(row) {
@@ -2422,16 +2495,12 @@
         });
         card.classList.remove('capture-ready');
         const dataUrl = canvas.toDataURL('image/png');
-        const a = document.createElement('a');
-        a.href = dataUrl;
-        a.download = filename;
-        document.body.appendChild(a);
-        a.click();
-        a.remove();
-        // 便于手机长按保存到相册，再打开一个新标签显示图片
-        const imgWin = window.open();
-        if (imgWin) {
-          imgWin.document.write(`<img src="${dataUrl}" style="width:100%;height:auto;">`);
+        // 便于微信长按保存：展示全屏预览
+        if (confirmPreview && confirmPreviewImg) {
+          confirmPreviewImg.src = dataUrl;
+          confirmPreview.classList.add('show');
+          confirmPreview.setAttribute('aria-hidden', 'false');
+          document.body.style.overflow = 'hidden';
         }
         return true;
       } catch (e) {
@@ -2495,6 +2564,23 @@
         recalc();
       }
     });
+
+    // 关闭图片预览
+    // 关闭预览
+    function closePreview() {
+      if (!confirmPreview) return;
+      confirmPreview.classList.remove('show');
+      confirmPreview.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
+    if (confirmPreviewClose) {
+      confirmPreviewClose.addEventListener('click', closePreview);
+    }
+    if (confirmPreview) {
+      confirmPreview.addEventListener('click', e => {
+        if (e.target === confirmPreview) closePreview();
+      });
+    }
 
     // 页面加载后先算一遍（默认全 0）
     recalc();
