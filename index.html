@@ -2628,8 +2628,13 @@
         if (!lastConfirmDataUrl) return;
 
         if (isWeChat()) {
-          // 微信：无法直接写入相册，提示长按保存
-          alert('微信内置浏览器无法一键保存，请长按图片选择“保存图片”');
+          // 微信：尝试打开图片页便于长按保存，若被拦截则保留预览层
+          const opened = window.open(lastConfirmDataUrl, '_blank');
+          // 如果被阻止，至少保证预览层可见以便长按保存
+          if (!opened) {
+            // 仍需提示用户长按保存
+            alert('微信内置浏览器无法一键保存，请长按图片选择“保存图片”');
+          }
           // 确保预览层可见，便于长按
           confirmPreviewImg.src = lastConfirmDataUrl;
           confirmPreview.classList.add('show');
