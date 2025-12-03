@@ -582,6 +582,18 @@
       font-size: 13px;
       color: #888;
     }
+    .confirm-preview-save {
+      margin-top: 14px;
+      padding: 10px 16px;
+      border-radius: 10px;
+      border: none;
+      background: linear-gradient(135deg, #ff8a5c, #ff5757);
+      color: #fff;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 6px 14px rgba(255, 87, 87, 0.25);
+    }
     .confirm-preview-close {
       margin-top: 16px;
       padding: 8px 16px;
@@ -2345,8 +2357,9 @@
   <div id="confirm-preview" class="confirm-preview" aria-hidden="true">
     <div class="confirm-preview-inner">
       <img id="confirm-preview-img" class="confirm-preview-img" src="" alt="报价确认单">
-      <p class="confirm-preview-tip">长按上方图片可保存到手机相册</p>
-      <button type="button" id="confirm-preview-close" class="confirm-preview-close">返回</button>
+      <p class="confirm-preview-tip">长按上方图片即可保存到手机相册</p>
+      <button type="button" id="confirm-preview-save" class="confirm-preview-save">保存图片</button>
+      <button type="button" id="confirm-preview-close" class="confirm-preview-close">返回修改</button>
     </div>
   </div>
 
@@ -2366,7 +2379,14 @@
     const confirmPreview = document.getElementById('confirm-preview');
     const confirmPreviewImg = document.getElementById('confirm-preview-img');
     const confirmPreviewClose = document.getElementById('confirm-preview-close');
+    const confirmPreviewSave = document.getElementById('confirm-preview-save');
     let cachedPayload = null;
+    let lastConfirmDataUrl = '';
+
+    // 微信内置浏览器判定：用于切换保存策略（微信需长按保存）
+    function isWeChat() {
+      return /MicroMessenger/i.test(navigator.userAgent);
+    }
 
     function getRowKey(row) {
       return `${row.dataset.name}__${row.dataset.spec}__${row.dataset.price}`;
@@ -2481,7 +2501,7 @@
     }
 
     // 保存确认单卡片为图片
-    async function saveConfirmSnapshot(filename = '确认单.png') {
+    async function saveConfirmSnapshot(filename = '安井火锅报价确认单.png') {
       if (typeof window.html2canvas !== 'function') return false;
       const card = document.querySelector('.confirm-card');
       if (!card) return false;
@@ -2495,12 +2515,22 @@
         });
         card.classList.remove('capture-ready');
         const dataUrl = canvas.toDataURL('image/png');
-        // 便于微信长按保存：展示全屏预览
-        if (confirmPreview && confirmPreviewImg) {
+        lastConfirmDataUrl = dataUrl;
+
+        // 微信内置浏览器：展示全屏预览，提示长按保存（无法直接写入相册）
+        if (isWeChat() && confirmPreview && confirmPreviewImg) {
           confirmPreviewImg.src = dataUrl;
           confirmPreview.classList.add('show');
           confirmPreview.setAttribute('aria-hidden', 'false');
           document.body.style.overflow = 'hidden';
+        } else {
+          // 非微信：继续走下载
+          const a = document.createElement('a');
+          a.href = dataUrl;
+          a.download = filename || '安井火锅报价确认单.png';
+          document.body.appendChild(a);
+          a.click();
+          document.body.removeChild(a);
         }
         return true;
       } catch (e) {
@@ -2579,6 +2609,21 @@
     if (confirmPreview) {
       confirmPreview.addEventListener('click', e => {
         if (e.target === confirmPreview) closePreview();
+      });
+    }
+    if (confirmPreviewSave) {
+      confirmPreviewSave.addEventListener('click', () => {
+        if (!lastConfirmDataUrl) return;
+        if (isWeChat()) {
+          alert('微信内置浏览器无法一键保存，请长按图片选择“保存图片”');
+          return;
+        }
+        const a = document.createElement('a');
+        a.href = lastConfirmDataUrl;
+        a.download = '安井火锅报价确认单.png';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
       });
     }
 
