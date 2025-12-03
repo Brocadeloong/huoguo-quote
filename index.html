@@ -438,9 +438,10 @@
       inset: 0;
       background: rgba(0,0,0,0.45);
       display: none;
-      align-items: center;
+      align-items: flex-start;
       justify-content: center;
-      padding: 16px;
+      padding: 16px 12px;
+      overflow: hidden; /* 只让确认卡片内部滚动 */
       z-index: 999;
     }
     .confirm-mask.show {
@@ -451,9 +452,11 @@
       max-width: 820px;
       background: radial-gradient(circle at 25% 20%, #f6f9ff, #ffffff 65%);
       border-radius: 16px;
-      padding: 24px 20px 22px;
+      padding: 24px 20px 32px; /* 底部加大留白，便于浏览 */
       box-shadow: 0 14px 34px rgba(0,0,0,0.14);
       border: 1px solid #e5e7eb;
+      max-height: calc(100vh - 32px);
+      overflow-y: auto;
     }
     .confirm-title {
       font-size: 21px;
@@ -2298,7 +2301,7 @@
       <div class="customer">
         <label>
           客户名称 / 收货人
-          <input type="text" id="customer-name" placeholder="例如：解锦龙">
+          <input type="text" id="customer-name" placeholder="例如：某某某">
         </label>
         <label>
           联系方式（手机 / 微信）
@@ -2409,6 +2412,13 @@
       if (window.CSS && CSS.escape) return CSS.escape;
       return s => s.replace(/[^a-zA-Z0-9_-]/g, c => '\\' + c);
     })();
+
+    function scrollToSelected() {
+      const box = document.querySelector('.selected-box');
+      if (box) {
+        box.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
 
     function renderSelectedSummary(list, total) {
       selectedCountEl.textContent = `(${list.length})`;
@@ -2755,12 +2765,17 @@
       document.body.style.overflow = 'hidden';
       // 进入确认单时强制回到顶部，确保全屏展示（移动端填写后可能滚到底部）
       window.scrollTo({ top: 0, behavior: 'smooth' });
+      const confirmCardEl = document.querySelector('.confirm-card');
+      if (confirmCardEl) {
+        confirmCardEl.scrollTop = 0;
+      }
     }
 
     function closeConfirmModal() {
       confirmModal.classList.remove('show');
       confirmModal.setAttribute('aria-hidden', 'true');
       document.body.style.overflow = '';
+      scrollToSelected();
     }
 
     document.getElementById('submit-btn').addEventListener('click', () => {
