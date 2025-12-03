@@ -2616,25 +2616,37 @@
       const card = document.querySelector('.confirm-card');
       if (!card) return false;
       try {
-        const prevScroll = card.scrollTop;
-        const prevMaskOverflow = confirmModal ? confirmModal.style.overflow : '';
-        card.classList.add('capture-ready', 'full-capture');
-        if (confirmModal) {
-          confirmModal.style.overflow = 'auto';
-          confirmModal.scrollTop = 0;
-        }
-        card.scrollTop = 0;
-        const scale = Math.min(3, Math.max(2, window.devicePixelRatio || 2)); // 提升清晰度
-        const canvas = await window.html2canvas(card, {
-          scale: Math.max(scale, 3), // 提升导出清晰度
+        const rect = card.getBoundingClientRect();
+        const clone = card.cloneNode(true);
+        clone.classList.add('capture-ready', 'full-capture');
+        clone.style.position = 'absolute';
+        clone.style.left = '-9999px';
+        clone.style.top = '0';
+        clone.style.width = `${rect.width}px`;
+        clone.style.maxWidth = 'none';
+        clone.style.maxHeight = 'none';
+        clone.style.height = 'auto';
+        document.body.appendChild(clone);
+
+        const targetWidth = Math.ceil(clone.scrollWidth);
+        const targetHeight = Math.ceil(clone.scrollHeight);
+        const canvasLimit = 14000; // 避免移动端 canvas 超长被截断
+        const baseScale = Math.min(2.4, Math.max(2, window.devicePixelRatio || 2));
+        const scale = Math.min(baseScale, canvasLimit / Math.max(targetWidth, targetHeight));
+        const canvas = await window.html2canvas(clone, {
+          scale,
           backgroundColor: '#f7f8fa',
-          useCORS: true
+          useCORS: true,
+          scrollX: 0,
+          scrollY: 0,
+          windowWidth: targetWidth,
+          windowHeight: targetHeight,
+          width: targetWidth,
+          height: targetHeight
         });
-        card.classList.remove('capture-ready', 'full-capture');
-        card.scrollTop = prevScroll;
-        if (confirmModal) {
-          confirmModal.style.overflow = prevMaskOverflow;
-        }
+
+        document.body.removeChild(clone);
+
         const dataUrl = canvas.toDataURL('image/png');
         lastConfirmDataUrl = dataUrl;
 
