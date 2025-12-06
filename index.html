@@ -2365,7 +2365,7 @@
       <div class="total">
         总价：<span id="total">0.00</span> 元
       </div>
-      <div class="limit-note">配送规则：满80元起送，未达金额无法生成确认单。</div>
+      <div class="limit-note">配送规则：满100元起送，未达金额无法生成确认单。</div>
 
       <div class="customer">
         <label>
@@ -2445,7 +2445,7 @@
 
   <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
   <script>
-    const MIN_TOTAL = 80;
+    const MIN_TOTAL = 100;
     const NAME_RE = /^[\u4e00-\u9fa5·]{2,8}$/; // 简单姓名校验：2-8个中文或中间点
     const PHONE_RE = /^\d{11}$/; // 11位数字
     if ('scrollRestoration' in history) {
