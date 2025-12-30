@@ -7,7 +7,7 @@ const PORT = process.env.PORT || 3000;
 const LOG_FILE = path.join(__dirname, 'quote-log.jsonl');
 const EXCEL_DIR = path.join(__dirname, 'excel');
 const MAX_BODY = 1024 * 1024; // 1MB
-const MIN_TOTAL = 80;
+const MIN_TOTAL = 100;
 
 function send(res, status, payload) {
   res.writeHead(status, {
